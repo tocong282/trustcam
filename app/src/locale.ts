@@ -1,5 +1,8 @@
 export type Language = 'vi' | 'en';
 const vi = {
+  configuredService: 'Dịch vụ được cấu hình cho ứng dụng',
+  server_mismatch: 'Dịch vụ đã lưu khác dịch vụ được cấu hình trong bản ứng dụng này. Đã chặn gửi dữ liệu và thông tin truy cập; không tự đổi địa chỉ hoặc chuyển token. Liên hệ hỗ trợ để dùng đúng bản ứng dụng cho hồ sơ đã lưu.',
+  server_unconfigured: 'Bản ứng dụng chưa có cấu hình dịch vụ hợp lệ. Đã chặn gửi dữ liệu và thông tin truy cập. Liên hệ hỗ trợ để nhận bản ứng dụng được cấu hình đúng; dữ liệu đã lưu giữ nguyên.',
   shareEnterprise: 'Chia sẻ hồ sơ với doanh nghiệp', confirmEnterprise: 'Đồng ý cấp quyền truy cập',
   enterprisePrivacy: 'Doanh nghiệp được cấu hình trên máy chủ này sẽ được truy cập ảnh, lịch sử bằng chứng và báo cáo của hồ sơ này. Ứng dụng không xác minh danh tính doanh nghiệp. Bản demo chưa hỗ trợ thu hồi quyền. Chỉ xác nhận nếu bạn có quyền chia sẻ dữ liệu. Hủy sẽ không gửi yêu cầu chia sẻ.',
   enterpriseUnknown: 'Chưa kiểm tra quyền chia sẻ trên máy chủ.', enterpriseShared: 'Máy chủ xác nhận đã cấp quyền doanh nghiệp.', enterpriseNotShared: 'Máy chủ xác nhận chưa chia sẻ hồ sơ.', enterpriseStatus: 'Kiểm tra lại quyền chia sẻ',
@@ -72,6 +75,9 @@ const vi = {
   invalid_response: 'Máy chủ trả dữ liệu không đúng hợp đồng.', not_ready: 'Camera hoặc phiên chưa sẵn sàng.', image_modified: 'Byte ảnh khác với ảnh đã ký.', integrity_verified: 'Byte ảnh và chữ ký khớp bằng chứng đã lưu.',
 };
 const en: Record<keyof typeof vi, string> = {
+  configuredService: 'App-configured service',
+  server_mismatch: 'The saved service differs from this app build’s configured service. Data and credentials are blocked from sending; no automatic address switch or token transfer. Contact support for the matching app build for your saved dossiers.',
+  server_unconfigured: 'This app build has no valid service configuration. Data and credentials are blocked from sending. Contact support for a correctly configured build; saved data remains unchanged.',
   shareEnterprise: 'Share dossier with enterprise', confirmEnterprise: 'Agree to grant access',
   enterprisePrivacy: 'The enterprise configured on this server will gain access to this dossier’s images, evidence history and report. The app does not verify enterprise identity. This demo does not support revoking access yet. Confirm only if you have permission to share this data. Cancel sends no share request.',
   enterpriseUnknown: 'Server share status not checked.', enterpriseShared: 'Server confirmed enterprise access granted.', enterpriseNotShared: 'Server confirmed dossier not shared.', enterpriseStatus: 'Check share status again',

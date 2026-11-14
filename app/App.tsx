@@ -12,7 +12,7 @@ import * as Sharing from 'expo-sharing';
 import { slots, type Slot, canonicalManifest, checkImageSize, normalizeApiUrl } from './src/core';
 import { hex, publicKeyHex, signBytes } from './src/signing';
 import { messages, type Language, type MessageKey } from './src/locale';
-import { request } from './src/api';
+import { request as apiRequest } from './src/api';
 import { checkPhotoDimensions, selectPictureSize } from './src/capture';
 import { localForEvidence, matchPendingEvidence, type LocalPhoto } from './src/localPhotos';
 import { createLocalPhoto, saveLocalPhoto, listLocalPhotos, deleteLocalPhotos, ownedFile, photoFile, type OwnedPhoto } from './src/photoStorage';
@@ -27,6 +27,19 @@ const SEED = 'trustcam.device-seed.v1';
 const LANG = 'trustcam.language.v1';
 const THEME = 'trustcam.theme.v1';
 const storeOptions = { keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY };
+const configuredBase = (() => {
+  try { return normalizeApiUrl(process.env.EXPO_PUBLIC_API_URL || (__DEV__ ? 'http://localhost:8000' : '')); }
+  catch { return ''; }
+})();
+function destinationError(apiBase: string) {
+  return __DEV__ ? '' : !configuredBase ? 'server_unconfigured' : apiBase !== configuredBase ? 'server_mismatch' : '';
+}
+// All app network paths share this guard, including startup and authenticated retries.
+async function request<T>(...args: Parameters<typeof apiRequest>): Promise<T> {
+  const error = destinationError(args[0]);
+  if (error) throw new Error(error);
+  return apiRequest<T>(...args);
+}
 
 export default function App() {
   const [lang, setLang] = useState<Language>('vi');
@@ -123,7 +136,7 @@ export default function App() {
   async function enterpriseAccess(grant = false) {
     const auth = credentials;
     if (!auth || session?.session_id !== auth.session_id || preferences?.base !== base || preferences.credentials?.session_id !== auth.session_id || preferences.credentials.token !== auth.token || preferences.credentials.device_id !== auth.device_id || !preferences.dossiers.some(item => item.base === base && item.session_id === auth.session_id && item.token === auth.token && item.device_id === auth.device_id)) throw new Error('not_ready');
-    if (grant && !await confirm('shareEnterprise', 'enterprisePrivacy', `${base}\n${auth.session_id}`, 'confirmEnterprise')) return;
+    if (grant && !await confirm('shareEnterprise', 'enterprisePrivacy', `${__DEV__ ? base : t('configuredService')}\n${auth.session_id}`, 'confirmEnterprise')) return;
     setEnterpriseShare(null); // A failed/ambiguous request must not leave an old success on screen.
     try {
       const data = object(await request<unknown>(base, `/session/${encodeURIComponent(auth.session_id)}/share-enterprise`, auth.token, grant ? {consent:true} : undefined));
@@ -157,16 +170,18 @@ export default function App() {
       publicKeyHex(storedSeed); // Fail closed on corrupted key; never replace silently.
       setSeed(storedSeed);
       const raw = await SecureStore.getItemAsync(STORE);
-      const fallback = normalizeApiUrl(process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000');
+      if (!raw && !configuredBase) throw new Error('server_unconfigured');
+      const fallback = configuredBase;
       saved = parsePreferences(raw, fallback, publicKeyHex(storedSeed));
       // Persist legacy migration before exposing switch/create actions; never silently repair/drop entries.
       await SecureStore.setItemAsync(STORE, JSON.stringify(saved), storeOptions);
       setPreferences(saved); setBase(saved.base); setUrlInput(saved.base); setCredentials(saved.credentials); setLoaded(true);
     } catch (err) {
-      if (err instanceof Error && ['key_corrupt', 'invalid_url'].includes(err.message)) throw err;
+      if (err instanceof Error && ['key_corrupt', 'invalid_url', 'server_unconfigured'].includes(err.message)) throw err;
       throw new Error('storage_error');
     }
     reloadLocalPhotos();
+    if (destinationError(saved.base)) return;
     // Network errors leave saved credentials usable, with Refresh available for retry.
     void loadHealth(saved.base);
     if (saved.credentials) await loadSession(saved.credentials, saved.base);
@@ -289,6 +304,7 @@ export default function App() {
   }
   async function refresh() { if (credentials) { void loadHealth(); await loadSession(); } else await loadHealth(); }
   async function saveUrl() {
+    if (!__DEV__) throw new Error('not_ready');
     const next = normalizeApiUrl(urlInput);
     if (next !== base) {
       if (!await confirm('save', 'changeApiConfirm')) return;
@@ -313,10 +329,11 @@ export default function App() {
     setVerification({ result: result.result, reason: result.reason });
   }
   const target = captureTarget(session, retakeId, additionalSlot);
-  const disabled = busy || !loaded;
+  const trustError = destinationError(base);
+  const disabled = busy || !loaded || !!trustError;
   const copy = appCopy[lang];
   const p = palettes[mode];
-  const page = { mode, copy, busy, error: error ? t(error) : null };
+  const page = { mode, copy, busy, error: trustError ? t(trustError) : error ? t(error) : null };
   const progress = (count: number, required: number) => `${count}/20 ${t('photoCount')} · ${required}/4 ${t('requiredCategories')}`;
   const progressLabel = session ? progress(session.evidence.length, slots.filter(slot => session.evidence.some(item => item.slot === slot)).length) : t('summaryUnknown');
   const dossierTab = ['checklist', 'report', 'verify'].includes(screen);
@@ -361,7 +378,7 @@ export default function App() {
         style={[styles.action, {borderColor:p.border}]} onPress={() => { if (!busy) setDossierDetail(false); }}><Text style={{color:p.blue}}>{t('backDossiers')}</Text></Pressable>}
       {dossierTab && dossierDetail && credentials && <View style={[styles.action, {borderColor:p.border}]}>
         <Text style={{color:p.text}}>{t('enterprisePrivacy')}</Text>
-        <Text style={{color:p.muted}}>{base}{'\n'}{credentials.session_id}</Text>
+        <Text style={{color:p.muted}}>{__DEV__ ? base : t('configuredService')}{'\n'}{credentials.session_id}</Text>
         <Text accessibilityLiveRegion="polite" style={{color:p.text}}>{enterpriseShare?.base === base && enterpriseShare.id === credentials.session_id ? `${t(enterpriseShare.shared ? 'enterpriseShared' : 'enterpriseNotShared')}${enterpriseShare.sharedAt ? ' · ' + enterpriseShare.sharedAt : ''}` : t('enterpriseUnknown')}</Text>
         <Pressable accessibilityRole="button" accessibilityLabel={t('shareEnterprise')} accessibilityState={{disabled:disabled || session?.session_id !== credentials.session_id}}
           disabled={disabled || session?.session_id !== credentials.session_id} style={styles.action} onPress={perform(() => enterpriseAccess(true))}><Text style={{color:p.blue}}>{t('shareEnterprise')}</Text></Pressable>
@@ -431,7 +448,7 @@ export default function App() {
         <LocalPhotosCard mode={mode} copy={copy} busy={busy} photos={ownedPhotos.map(item => ({
           id: `${item.legacy}:${item.name}`, label: item.name,
           statusLabel: t(!item.metadata ? 'orphanPhoto' : item.metadata.evidence_id ? 'savedLocal' : 'pendingLocal'),
-          detail: item.metadata ? `${item.metadata.base} · ${item.metadata.session_id} · ${t(item.metadata.slot)} · ${item.metadata.evidence_id ?? ''}` : '',
+          detail: item.metadata ? `${__DEV__ ? item.metadata.base + ' · ' : ''}${item.metadata.session_id} · ${t(item.metadata.slot)} · ${item.metadata.evidence_id ?? ''}` : '',
           canShare: ownedFile(item).exists,
         }))} onRefresh={perform(async () => { reloadLocalPhotos(); })} onRequestDelete={perform(removeLocalPhotos)}
           onShare={id => { void run(async () => { const item = ownedPhotos.find(entry => `${entry.legacy}:${entry.name}` === id); if (!item || !ownedFile(item).exists) throw new Error('not_ready'); await sharePhoto(ownedFile(item).uri); }); }} />

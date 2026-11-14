@@ -3,6 +3,7 @@ import hashlib
 import hmac
 import json
 import io
+import math
 import os
 from pathlib import Path
 import re
@@ -308,8 +309,10 @@ def install_dashboard(app, connect, authorized, validate_stored_evidence, eviden
                   'PASS không đồng nghĩa được bồi thường; không kết luận phạm vi bảo hiểm, '
                   'trách nhiệm hay số tiền chi trả; phải đối chiếu hợp đồng thực tế.')
         directory = Path(__file__).resolve().parents[1] / 'corpus'
-        terms = set(re.findall(r'\w+', q.casefold()))
-        ranked = []
+        tokens = lambda value: re.findall(r'\w+', value.casefold())
+        terms = set(tokens(q))
+        query = q.strip().casefold()
+        staged = []
         for name in ('legal-demo', 'motor-insurance-demo'):
             try:
                 with (directory / name / 'manifest.json').open(encoding='utf-8') as handle:
@@ -319,7 +322,6 @@ def install_dashboard(app, connect, authorized, validate_stored_evidence, eviden
                     content = handle.read(2 * 1024 * 1024 + 1)
                 if len(content) > 2 * 1024 * 1024:
                     raise ValueError
-                corpus_results = []
                 for line in content.splitlines():
                     row = json.loads(line)
                     url = urlsplit(row['source_url'])
@@ -328,22 +330,31 @@ def install_dashboard(app, connect, authorized, validate_stored_evidence, eviden
                     text = row['text']
                     if hashlib.sha256(text.encode()).hexdigest() != row['sha256']:
                         raise ValueError
-                    document = documents[row['document_id']]
-                    words = set(re.findall(r'\w+', text.casefold()))
-                    score = len(terms & words)
-                    if q.strip() and q.strip().casefold() == str(row['article']).casefold():
-                        score += len(terms) + 1
-                    if score:
-                        corpus_results.append((score, {
-                            'id': row['id'], 'document_title': document['title'],
-                            'article': row['label'] if name == 'legal-demo' else str(row['article']),
-                            'label': row['label'], 'text': text, 'source_url': row['source_url'],
-                            'sha256': row['sha256'], 'legal_status': row['legal_status'],
-                            'document_type': 'law' if name == 'legal-demo' else document['type'],
-                            'current_validity_verified': False}))
-                ranked.extend(corpus_results)
+                    staged.append((name, row, documents[row['document_id']], tokens(text)))
             except (OSError, ValueError, KeyError, TypeError, AttributeError, RecursionError):
                 notice = f'Corpus unavailable: {name}. ' + notice
+        frequency = {}
+        for _, _, _, words in staged:
+            for word in set(words):
+                frequency[word] = frequency.get(word, 0) + 1
+        weight = lambda word: math.log((len(staged) + 1) / (frequency.get(word, 0) + 1)) + 1
+        bigrams = lambda words: {tuple(words[index:index + 2]) for index in range(len(words) - 1)}
+        wanted = bigrams(tokens(q))
+        ranked = []
+        for name, row, document, words in staged:
+            matched = terms & set(words)
+            if not matched:
+                continue
+            score = sum(weight(word) for word in matched) + 0.5 * len(wanted & bigrams(words))
+            if query and query == str(row['article']).casefold():
+                score += 100
+            ranked.append((score, {
+                'id': row['id'], 'document_title': document['title'],
+                'article': row['label'] if name == 'legal-demo' else str(row['article']),
+                'label': row['label'], 'text': row['text'], 'source_url': row['source_url'],
+                'sha256': row['sha256'], 'legal_status': row['legal_status'],
+                'document_type': 'law' if name == 'legal-demo' else document['type'],
+                'current_validity_verified': False}))
         ranked.sort(key=lambda pair: (-pair[0], pair[1]['id']))
         return {'mode': 'retrieval_only', 'results': [item for _, item in ranked[:5]],
                 'current_validity_verified': False, 'notice': notice}

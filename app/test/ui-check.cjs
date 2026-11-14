@@ -6,6 +6,7 @@ const Module = require('node:module');
 const appRequire = Module.createRequire(path.resolve(__dirname, '../package.json'));
 const ts = appRequire('typescript');
 const React = appRequire('react');
+global.__DEV__ = true;
 const appSource = fs.readFileSync(path.join(__dirname, '../App.tsx'), 'utf8');
 // Exercise actual App response guard before verification state can be published.
 const verificationGuard = appSource.match(/async function pickVerify\(\)[\s\S]*?const result = .*;\n([\s\S]*?)    setVerification/);
@@ -428,10 +429,10 @@ function fixtureApp(screen, language, mode, finalized = false, options = {}) {
   for (const [index, value] of Object.entries(options.states ?? {})) states[index] = value;
   const hooks = {
     useState: initial => { const i = index++; const value = i < states.length ? states[i] : typeof initial === 'function' ? initial() : initial; return [value, next => updates.push([i, next])]; },
-    useRef: current => ({current}), useEffect: () => {},
+    useRef: current => ({current}), useEffect: effect => options.effects?.push(effect),
   };
   const filename = path.join(__dirname, '../App.tsx');
-  const compiled = ts.transpileModule(appSource, {compilerOptions: {module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022}}).outputText;
+  const compiled = ts.transpileModule(appSource.replace(/\b__DEV__\b/g, String(options.dev !== false)).replace(/process\.env\.EXPO_PUBLIC_API_URL/g, JSON.stringify(options.configuredBase ?? 'https://example.com')), {compilerOptions: {module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022}}).outputText;
   const mod = new Module(filename, module);
   mod.filename = filename;
   mod.require = id => {
@@ -453,7 +454,7 @@ function fixtureApp(screen, language, mode, finalized = false, options = {}) {
     if (id === './src/dossiers') return load('../dossiers.ts');
     if (id === './src/core') return load('../core.ts');
     if (id === './src/localPhotos') return load('../localPhotos.ts');
-    if (id === './src/photoStorage') return {photoFile: name => {
+    if (id === './src/photoStorage') return {...options.photoStorage, photoFile: name => {
       assert.equal(load('../localPhotos.ts').ownedPhotoName(name), true, 'Only owned filenames reach local preview lookup');
       if (options.fileError) throw new Error('storage_error');
       return {exists: options.existingNames?.includes(name) ?? false, uri: 'file:///owned/' + name};
@@ -469,6 +470,82 @@ function fixtureApp(screen, language, mode, finalized = false, options = {}) {
   }
   return {tree: rawNodes(element), updates};
 }
+// Production hides technical destinations without hiding connection/retry or consent.
+for (const dev of [false, true]) for (const language of ['vi', 'en']) {
+  global.__DEV__ = dev;
+  const copy = mergedCopy[language];
+  for (const screen of ['session', 'checklist', 'report', 'verify', 'settings']) {
+    const {tree} = fixtureApp(screen, language, 'dark', false, {dev,
+      states:screen==='settings' ? {11:[{legacy:false,name:'trustcam-00000000-0000-4000-8000-000000000001.jpg',metadata:{base:'http://192.168.1.55:8000',session_id:'OLD_SESSION',slot:'wide_context',evidence_id:'OLD_EVIDENCE'}}]} : {},
+      photoStorage:{ownedFile:()=>({exists:true})}});
+    const rendered = nodes(tree[0]);
+    const visible = rendered.filter(n => n.type === 'Text').map(text).join('\n');
+    assert.equal(visible.includes('https://example.com'), dev && screen !== 'settings', screen + ': destination visibility');
+    if(screen==='settings') assert.equal(visible.includes('192.168.1.55'),dev,'Local photo metadata hides old server IP in production');
+    const inputs = rendered.filter(n => n.type === 'TextInput' && n.props.accessibilityLabel === copy.apiUrl);
+    assert.equal(inputs.length, dev && screen === 'settings' ? 1 : 0, 'Production has no API URL field');
+    if (screen === 'session') {
+      assert.ok(visible.includes(copy.offline), 'Keep honest offline status');
+      assert.equal(rendered.find(n => n.type === 'Pressable' && n.props.accessibilityLabel === copy.refresh).props.disabled, false, 'Retry stays reachable');
+      if (!dev) assert.equal(visible.includes(copy.serverHelp), false, 'No development LAN instructions');
+    }
+    if (!dev && ['checklist', 'report', 'verify'].includes(screen)) assert.ok(visible.includes(copy.enterprisePrivacy), 'Keep meaningful enterprise consent');
+  }
+}
+global.__DEV__ = true;
+async function checkProductionTrust() {
+  const flush = async () => { for (let i=0;i<50;i++) await Promise.resolve(); };
+  for (const language of ['vi','en']) for (const configuredBase of ['https://configured.example', '', 'not a URL']) {
+    const events=[];
+    const options={dev:false,configuredBase,api:{request:async(...args)=>{events.push(args);throw new Error('network_error');}}};
+    const fixture=fixtureApp('session',language,'dark',false,options);
+    const visible=nodes(fixture.tree[0]).filter(n=>n.type==='Text').map(text).join('\n');
+    assert.ok(visible.includes(mergedCopy[language][configuredBase.startsWith('https:') ? 'server_mismatch' : 'server_unconfigured']), 'Production warns instead of concealing saved destination mismatch');
+    fixture.tree.find(n=>n.type===ui.SessionScreen).props.onRefresh();await flush();
+    assert.equal(events.length,0,'No health or bearer request to mismatched/unknown destination');
+    const settings=fixtureApp('settings',language,'dark',false,options);
+    settings.tree.find(n=>n.type===ui.SettingsScreen).props.onRequestSaveApiUrl();await flush();
+    assert.equal(events.length,0,'No hidden editable URL path in production');
+    const camera=fixtureApp('camera',language,'dark',false,options);
+    camera.tree.find(n=>n.type===ui.CameraScreen).props.onCreate();await flush();
+    assert.equal(events.length,0,'No session creation before trust mismatch resolved');
+    assert.equal(fixture.updates.some(([i])=>i===2 || i===5 || i===23),false,'Do not silently switch URL or credentials');
+    const key=entries[0].public_key, auth={session_id:'TEST_SESSION',token:'TEST_TOKEN',device_id:key};
+    const saved={base:'https://example.com',credentials:auth,dossiers:[{...auth,base:'https://example.com',created_at:null}]};
+    const effects=[], writes=[];
+    fixtureApp('session',language,'dark',false,{...options,effects,signing:{publicKeyHex:()=>key},
+      secureStore:{getItemAsync:async name=>name==='trustcam.device-seed.v1' ? 'ab'.repeat(32) : name==='trustcam.preferences.v1' ? JSON.stringify(saved) : null,setItemAsync:async(name,value)=>writes.push(JSON.parse(value))},
+      photoStorage:{listLocalPhotos:()=>({photos:[],files:[],corrupt:false})}});
+    effects.at(-1)();await flush();
+    assert.equal(events.length,0,'Startup cannot contact untrusted saved destination');
+    assert.deepEqual(writes,[saved],'Startup preserves exact saved destination and host credentials');
+  }
+  for(const language of ['vi','en']) {
+    const retryEvents=[];
+    const retry=fixtureApp('session',language,'dark',false,{dev:false,api:{request:async(...args)=>{retryEvents.push(args);throw new Error('network_error');}}});
+    retry.tree.find(n=>n.type===ui.SessionScreen).props.onRefresh();await flush();
+    assert.deepEqual(retryEvents,[['https://example.com','/health'],['https://example.com','/session/TEST_SESSION','TEST_TOKEN']],'Production retry still reaches correct destination with host-scoped credentials');
+    for(const screen of ['checklist','report','verify']) {
+      const list=fixtureApp(screen,language,'dark',false,{dev:false,states:{24:false}});
+      assert.ok(list.tree.some(n=>n.type===ui.DossierListScreen));
+      assert.equal(nodes(list.tree[0]).filter(n=>n.type==='Text').map(text).join('\n').includes('https://'),false,'Production dossier lists omit destination');
+    }
+    const events=[], copy=mergedCopy[language]; let answer='cancel';
+    const fixture=fixtureApp('checklist',language,'dark',false,{dev:false,
+      api:{request:async(...args)=>{events.push(args);return {shared:true,shared_at:'2026-11-14T00:00:00Z'};}},
+      alert:(title,message,buttons)=>{
+        assert.equal(title,copy.shareEnterprise);assert.ok(message.includes(copy.enterprisePrivacy));
+        assert.ok(message.includes(copy.configuredService+'\nTEST_SESSION'));assert.equal(message.includes('https://'),false);
+        buttons.find(b=>b.text===copy[answer]).onPress();
+      }});
+    const action=fixture.tree.find(n=>n.type==='Pressable' && n.props.accessibilityLabel===copy.shareEnterprise);
+    action.props.onPress();await flush();assert.equal(events.length,0,'Production cancel shares nothing');
+    answer='confirmEnterprise';action.props.onPress();await flush();
+    assert.deepEqual(events,[['https://example.com','/session/TEST_SESSION/share-enterprise','TEST_TOKEN',{consent:true}]],'Production consent keeps exact host-scoped bearer and explicit payload');
+  }
+  console.log('PASS production VI/EN hidden destinations, retained retry and explicit enterprise consent; mismatch/absent/invalid build config blocks startup and actions without URL/token migration (native doubles)');
+}
+checkProductionTrust().catch(error=>{console.error(error);process.exitCode=1;});
 // Canonical SecureStore mutation is exercised through real App callbacks with failing native IO.
 async function checkDossierActions() {
   const base='https://example.com', key=entries[0].public_key;

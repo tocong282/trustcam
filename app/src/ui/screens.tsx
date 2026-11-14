@@ -161,8 +161,10 @@ export function SessionScreen(props: PageProps & {
         color={palettes[mode][connection === 'online' ? 'emerald' : connection === 'offline' ? 'danger' : 'muted']} accessible={false} />
         <Label mode={mode} tone={connection === 'online' ? 'emerald' : connection === 'offline' ? 'danger' : 'muted'}>{c[connection]}</Label>
       </View>
-      <Label mode={mode} selectable>{props.serverLabel}</Label>
-      <Label mode={mode} tone="muted">{c.serverHelp}</Label>
+      {__DEV__ ? <>
+        <Label mode={mode} selectable>{props.serverLabel}</Label>
+        <Label mode={mode} tone="muted">{c.serverHelp}</Label>
+      </> : null}
       <Action mode={mode} label={c.refresh} icon="refresh-outline" disabled={busy} onPress={props.onRefresh} />
       {props.onOpenSettings ? <Action mode={mode} label={c.settings} icon="settings-outline" disabled={busy} onPress={props.onOpenSettings} /> : null}
     </Card>
@@ -387,13 +389,13 @@ export function SettingsScreen(props: PageProps & {
       <View style={styles.options}>{(['dark', 'light'] as const).map(theme => <Action key={theme} mode={mode} label={c[theme]}
         selected={mode === theme} disabled={busy} onPress={() => props.onThemeChange(theme)} />)}</View>
     </Card>
-    <Card mode={mode} title={c.apiUrl}>
+    {__DEV__ ? <Card mode={mode} title={c.apiUrl}>
       <Label mode={mode} tone="muted">{c.apiHelp}</Label>
       <TextInput accessibilityLabel={c.apiUrl} value={props.apiUrlDraft} onChangeText={props.onApiUrlDraftChange}
         autoCapitalize="none" autoCorrect={false} keyboardType="url" textContentType="URL" editable={!busy}
         style={[styles.input, { backgroundColor: p.inset, borderColor: p.border, color: p.text }]} />
       <Action mode={mode} label={c.save} disabled={busy || !props.canSaveApiUrl} onPress={props.onRequestSaveApiUrl} />
-    </Card>
+    </Card> : null}
     {props.children}
     <Card mode={mode}><Label mode={mode} tone="muted">{c.ragUnavailable}</Label></Card>
   </Page>;
