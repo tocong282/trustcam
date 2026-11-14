@@ -1,0 +1,30 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.trustcam/
+.test-data-*/
+data/
+app/node_modules/
+app/.expo/
+app/dist/
+app/android/
+app/ios/
+*.log
+
+# Private/runtime and local authoring artifacts
+*.sqlite*
+*.db
+*.pem
+*.key
+**/.claude/
+trustcam_react_native_components/
+ui-ready/
+pitch/*
+!pitch/*.md
+# Source PDFs/OCR remain local; public corpus includes selected excerpts and provenance.
+corpus/legal-demo/raw/
+corpus/motor-insurance-demo/raw/
+corpus/motor-insurance-demo/text/*.full-ocr-unreviewed.txt

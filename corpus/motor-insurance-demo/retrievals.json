@@ -1,0 +1,38 @@
+[
+  {
+    "source_url": "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html",
+    "resolved_url": "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html",
+    "http_status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "fetched_at_utc": "2026-11-14T08:36:43.016798+00:00",
+    "source_file": "raw/product-claims.html",
+    "sha256": "1d9efed8d9c77fb1da21ba8a17b3eb18aaf886bfcb011a1b986bb4b5981e58f3",
+    "refetch_sha256": "cde48bebf7773b01df53107839da90563f350d674587f23166bd6aceea137942",
+    "refetch_identical": false,
+    "bytes": 126847
+  },
+  {
+    "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+    "resolved_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "fetched_at_utc": "2026-11-14T08:36:48.769779+00:00",
+    "source_file": "raw/baoviet-969.pdf",
+    "sha256": "bfdaa4be36847abfb4b43f1d18b0475d1a62194feebcd8087f7704d280c48f59",
+    "refetch_sha256": "bfdaa4be36847abfb4b43f1d18b0475d1a62194feebcd8087f7704d280c48f59",
+    "refetch_identical": true,
+    "bytes": 9717084
+  },
+  {
+    "source_url": "https://baovietonline.com.vn/uploads/attachment/a28f0c31be4a2ff2618c17a0a1365970.pdf",
+    "resolved_url": "https://baovietonline.com.vn/uploads/attachment/a28f0c31be4a2ff2618c17a0a1365970.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "fetched_at_utc": "2026-11-14T08:36:49.521522+00:00",
+    "source_file": "raw/own-damage-claim-form.pdf",
+    "sha256": "1022a4ce3c2aecf9729794d45b44c981e3b9941e13032f13718b73191e235366",
+    "refetch_sha256": "1022a4ce3c2aecf9729794d45b44c981e3b9941e13032f13718b73191e235366",
+    "refetch_identical": true,
+    "bytes": 199480
+  }
+]

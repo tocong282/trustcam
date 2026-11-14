@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "demo_only": true,
+  "current_validity_verified": false,
+  "normalization": "pdftotext -layout UTF-8; remove form-feed/page-number/gazette headers and signature metadata; collapse whitespace and visual line wraps; retain article/paragraph headings. No OCR, translation or generated clauses.",
+  "documents": [
+    {
+      "id": "20-2023-QH15",
+      "document_number": "20/2023/QH15",
+      "title": "Luật Giao dịch điện tử",
+      "issued_date": "2023-06-22",
+      "effective_date": "2024-07-01",
+      "jurisdiction": "VN",
+      "language": "vi",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "version": "original_published",
+      "legal_status": "original text; amendment applicability not fully verified",
+      "text_file": "text/20-2023-QH15.txt",
+      "text_sha256": "ae498710ea3a6cba2ca4ff9de5cb35e385d34d28632d6217723a3e56d8fbcfc5",
+      "body_source_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/8/luat20-2023-qh15..pdf",
+      "selected_articles": [
+        8,
+        9,
+        10,
+        11,
+        22,
+        23
+      ],
+      "sources": [
+        {
+          "url": "https://vanban.chinhphu.vn/?classid=1&docid=208421&pageid=27160",
+          "resolved_url": "https://vanban.chinhphu.vn/?classid=1&docid=208421&pageid=27160",
+          "media_type": "text/html",
+          "fetched_at": "2026-11-14T07:57:55.504010Z",
+          "file": "raw/20-2023-QH15.html",
+          "sha256": "7fdf38131e0431d5073de55d172823a87be5bea0951f3562f691d7b90a880f4d"
+        },
+        {
+          "url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/8/luat20-2023-qh15..pdf",
+          "resolved_url": "https://datafiles.chinhphu.vn/cpp/files/vbpq/2023/8/luat20-2023-qh15..pdf",
+          "media_type": "application/pdf",
+          "fetched_at": "2026-11-14T07:57:56.122770Z",
+          "file": "raw/luat20-2023-qh15..pdf",
+          "sha256": "2458d01d6453cd11ab7aaddbae36e988110754bcb53a59eda729987a63882914"
+        }
+      ],
+      "known_source_excerpts": [
+        "Thông tin trong thông điệp dữ liệu không bị phủ nhận giá trị pháp lý chỉ vì thông tin đó được thể hiện dưới dạng thông điệp dữ liệu.",
+        "Điều 53."
+      ]
+    },
+    {
+      "id": "91-2015-QH13",
+      "document_number": "91/2015/QH13",
+      "title": "Bộ luật Dân sự",
+      "issued_date": "2015-11-24",
+      "effective_date": "2017-01-01",
+      "jurisdiction": "VN",
+      "language": "vi",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "version": "original_published",
+      "legal_status": "original text; amendment applicability not fully verified",
+      "text_file": "text/91-2015-QH13.txt",
+      "text_sha256": "d6f4cc82e01cf858f8a12d440c94e9c1a50edc9c92c77f560265e9aab01f2fb7",
+      "body_source_url": "https://rfd.gov.vn/content/vanban/Lists/VBPQ/Attachments/108/91_2015_QH13_Bo%20Luat%20Dan%20su.pdf",
+      "selected_articles": [
+        32,
+        38,
+        472,
+        479,
+        482,
+        589
+      ],
+      "sources": [
+        {
+          "url": "https://vanban.chinhphu.vn/?docid=183188&pageid=27160",
+          "resolved_url": "https://vanban.chinhphu.vn/?docid=183188&pageid=27160",
+          "media_type": "text/html",
+          "fetched_at": "2026-11-14T07:57:54.897332Z",
+          "file": "raw/91-2015-QH13.html",
+          "sha256": "92f7f502c43597e9b478cf1759a09573bc99e4485883c652750ef007141ce321"
+        },
+        {
+          "url": "https://rfd.gov.vn/content/vanban/Lists/VBPQ/Attachments/108/91_2015_QH13_Bo%20Luat%20Dan%20su.pdf",
+          "resolved_url": "https://rfd.gov.vn/content/vanban/Lists/VBPQ/Attachments/108/91_2015_QH13_Bo%20Luat%20Dan%20su.pdf",
+          "media_type": "application/pdf",
+          "fetched_at": "2026-11-14T08:01:22.168609Z",
+          "file": "raw/candidate-1.pdf",
+          "sha256": "b8703906de3ae5149335b00aba17d02eca1b6f408b6308de51d1d920420ff603"
+        }
+      ],
+      "known_source_excerpts": [
+        "1. Cá nhân có quyền đối với hình ảnh của mình. Việc sử dụng hình ảnh của cá nhân phải được người đó đồng ý. Việc sử dụng hình ảnh của người khác vì mục đích thương mại thì phải trả thù lao cho người có hình ảnh, trừ trường hợp các bên có thỏa thuận khác.",
+        "Điều 689."
+      ]
+    },
+    {
+      "id": "92-2015-QH13",
+      "document_number": "92/2015/QH13",
+      "title": "Bộ luật Tố tụng dân sự",
+      "issued_date": "2015-11-25",
+      "effective_date": "2016-07-01",
+      "jurisdiction": "VN",
+      "language": "vi",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "version": "original_published",
+      "legal_status": "original text; amendment applicability not fully verified",
+      "text_file": "text/92-2015-QH13.txt",
+      "text_sha256": "3c50df29cd0a8413bed42278aff715b9ea09b122ed61e3db381ada802fabc683",
+      "body_source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28624-1-incb-12511252-29-12-2015signedsignedsignedpdf",
+      "selected_articles": [
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "sources": [
+        {
+          "url": "https://vanban.chinhphu.vn/?docid=183189&pageid=27160",
+          "resolved_url": "https://vanban.chinhphu.vn/?docid=183189&pageid=27160",
+          "media_type": "text/html",
+          "fetched_at": "2026-11-14T07:57:54.897457Z",
+          "file": "raw/92-2015-QH13.html",
+          "sha256": "bc970d304575b32b4ac09122b1db5f623ac0c5767363981a2c01f49e7462cd7f"
+        },
+        {
+          "url": "https://congbao.chinhphu.vn/van-ban/luat-so-92-2015-qh13-18411.htm",
+          "resolved_url": "https://congbao.chinhphu.vn/van-ban/luat-so-92-2015-qh13-18411.htm",
+          "media_type": "text/html",
+          "fetched_at": "2026-11-14T08:02:37.699826Z",
+          "file": "raw/92-2015-gazette.html",
+          "sha256": "944766b3e9c63a34c4db37a7dd8629b4c832e60818a3a4be489787a96224b348"
+        },
+        {
+          "url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28624-1-incb-12511252-29-12-2015signedsignedsignedpdf",
+          "resolved_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28624-1-incb-12511252-29-12-2015signedsignedsignedpdf",
+          "media_type": "application/octet-stream",
+          "fetched_at": "2026-11-14T08:02:56.316423Z",
+          "file": "raw/92-2015-gazette-part-1.pdf",
+          "sha256": "bdae2e76f6aaf555adcc7f735ce958aec7b89f647f495b645e894ee7a42b6532"
+        },
+        {
+          "url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28625-1-incb-12531254-29-12-2015signedsignedpdf",
+          "resolved_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28625-1-incb-12531254-29-12-2015signedsignedpdf",
+          "media_type": "application/octet-stream",
+          "fetched_at": "2026-11-14T08:02:57.715103Z",
+          "file": "raw/92-2015-gazette-part-2.pdf",
+          "sha256": "e6f8ee28023bbe15087098cc89df22fededcdd6a9f7a74978f98a87a1c9f5915"
+        },
+        {
+          "url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28627-2-incb-12551256-29-12-2015signedsignedsignedsignedsignedpdf",
+          "resolved_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2015/11/18411/28627-2-incb-12551256-29-12-2015signedsignedsignedsignedsignedpdf",
+          "media_type": "application/octet-stream",
+          "fetched_at": "2026-11-14T08:02:59.144566Z",
+          "file": "raw/92-2015-gazette-part-3.pdf",
+          "sha256": "eba0e306dbd5450b7a4b2b4591c36770b3e17d461b05d585432db2bdafaf3246"
+        }
+      ],
+      "known_source_excerpts": [
+        "Chứng cứ trong vụ việc dân sự là những gì có thật được đương sự và cơ quan, tổ chức, cá nhân khác giao nộp, xuất trình cho Tòa án trong quá trình tố tụng hoặc do Tòa án thu thập được theo trình tự, thủ tục do Bộ luật này quy định và được Tòa án sử dụng làm căn cứ để xác định các tình tiết khách quan của vụ án cũng như xác định yêu cầu hay sự phản đối của đương sự là có căn cứ và hợp pháp.",
+        "Điều 517."
+      ]
+    }
+  ],
+  "fetch_issues": [
+    "vbpl.vn and moj.gov.vn returned HTTP 403; vbpl.moj.gov.vn DNS failed; toaan.gov.vn TLS issuer verification failed; no TLS bypass used.",
+    "2016 datafiles attachments are image-only scans; text sourced instead from official RFD PDF and original Official Gazette PDF issues.",
+    "No 2026 amendment applicability audit performed; originals only, not consolidated current law."
+  ]
+}

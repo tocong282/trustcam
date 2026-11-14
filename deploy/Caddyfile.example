@@ -1,0 +1,40 @@
+# Replace EVERY example domain, TEST-NET IP and certificate path before use.
+# Single Caddy directly on VPN; no CDN/tunnel proxy in front.
+{
+    auto_https disable_redirects
+    servers {
+        timeouts {
+            read_header 10s
+            read_body 30s
+            write 60s
+            idle 2m
+        }
+    }
+}
+
+https://demo.example.invalid {
+    # VPN interface only, NEVER 0.0.0.0. Firewall also restricts TCP 443 to VPN.
+    bind 192.0.2.2
+    # Operator-provisioned, device-trusted certificate with exact DNS SAN.
+    tls /etc/caddy/certs/demo.fullchain.pem /etc/caddy/certs/demo.key
+
+    route {
+        @wrongHost not host demo.example.invalid
+        respond @wrongHost "Unrecognized host" 421
+        # Exact VPN client IPs. Do not use private_ranges or trust X-Forwarded-For.
+        @outside not remote_ip 192.0.2.10/32
+        respond @outside "Private demo only" 403
+        # Whole API and static/dashboard: NO public /health or /session exception.
+        request_body {
+            max_size 10551296
+        }
+        header Cache-Control "no-store"
+        reverse_proxy 127.0.0.1:8000 {
+            header_up Host demo.example.invalid
+            header_up -Forwarded
+            header_up X-Forwarded-Host demo.example.invalid
+            header_up X-Forwarded-Proto https
+        }
+    }
+    # No access log: never add Authorization/cookie/body logging.
+}

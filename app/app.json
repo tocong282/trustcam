@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "TRUSTCAM",
+    "slug": "trustcam",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.trustcam.app",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        },
+        "CFBundleLocalizations": [
+          "vi",
+          "en"
+        ],
+        "CFBundleDevelopmentRegion": "vi"
+      }
+    },
+    "android": {
+      "package": "com.trustcam.app",
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "TRUSTCAM cần camera để chụp và ký ảnh bằng chứng. TRUSTCAM needs camera access to capture and sign evidence photos.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "TRUSTCAM cần ảnh bạn chọn để đối chiếu dữ liệu đã ký. TRUSTCAM uses your selected image to compare against signed evidence.",
+          "cameraPermission": "TRUSTCAM cần camera để chụp và ký ảnh bằng chứng. TRUSTCAM needs camera access to capture and sign evidence photos.",
+          "microphonePermission": false
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "faceIDPermission": false
+        }
+      ],
+      "expo-localization",
+      "expo-sharing",
+      "./plugins/withLanHttp.cjs",
+      "expo-font"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="dark">
+  <title>TRUSTCAM · Hồ sơ</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Đến nội dung chính</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="TRUSTCAM"><span class="brand-mark" aria-hidden="true">T</span> TRUSTCAM <span class="edition">REVIEW</span></a>
+    <div class="top-actions">
+      <label class="language"><span data-i18n="language">Ngôn ngữ</span><select id="locale"><option value="vi">Tiếng Việt</option><option value="en">English</option></select></label>
+      <button id="logout" type="button" hidden data-i18n="logout">Đăng xuất</button>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="login-panel" class="login-panel" aria-labelledby="login-title">
+      <p class="eyebrow" data-i18n="reviewDesk">GIÁM ĐỊNH VIÊN BẢO HIỂM</p>
+      <h1 id="login-title" data-i18n="loginTitle">Xem đúng ảnh. Đối chiếu đúng tệp.</h1>
+      <p class="muted" data-i18n="loginHelp">Dành cho Giám định viên bảo hiểm: duyệt hồ sơ yêu cầu bồi thường ô tô đã được cấp quyền. Không cần token từ điện thoại.</p>
+      <form id="login-form">
+        <label for="password" data-i18n="password">Mật khẩu dashboard</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="1024" aria-describedby="password-help">
+        <p id="password-help" class="help" data-i18n="passwordHelp">Dashboard không lưu mật khẩu. Phiên truy cập do máy chủ quản lý bằng cookie HttpOnly.</p>
+        <button id="login-submit" type="submit" class="primary" data-i18n="login">Đăng nhập</button>
+      </form>
+      <p id="login-message" role="status" aria-live="polite"></p>
+      <button id="auth-retry" type="button" hidden data-i18n="retry">Thử lại</button>
+      <p class="footnote" data-i18n="accessNotice">Bàn duyệt chỉ đọc và kiểm tra tệp. Không tạo hồ sơ, sửa dữ liệu hoặc yêu cầu bổ sung ảnh.</p>
+    </section>
+
+    <div id="workspace" hidden>
+      <div class="workspace-heading">
+        <div><p class="eyebrow" data-i18n="reviewDesk">GIÁM ĐỊNH VIÊN BẢO HIỂM</p><h1 data-i18n="workspaceTitle">Hồ sơ yêu cầu bồi thường</h1></div>
+        <span class="badge" data-i18n="readonly">Chỉ đọc · Đối chiếu tệp gốc</span>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Dashboard">
+        <button id="tab-cases" type="button" role="tab" aria-selected="true" aria-controls="cases-panel" data-tab="cases" data-i18n="cases">Hồ sơ</button>
+        <button id="tab-detail" type="button" role="tab" aria-selected="false" aria-controls="cases-panel" tabindex="-1" data-tab="detail" data-i18n="detail">Chi tiết</button>
+        <button id="tab-legal" type="button" role="tab" aria-selected="false" aria-controls="legal-panel" tabindex="-1" data-tab="legal" data-i18n="legal">Căn cứ</button>
+      </nav>
+      <p id="global-message" class="global-message" role="status" aria-live="polite"></p>
+      <section id="cases-panel" class="operate" role="tabpanel" aria-labelledby="tab-cases">
+        <aside class="queue" aria-labelledby="queue-title">
+          <div class="section-heading"><h2 id="queue-title" data-i18n="queue">Hồ sơ được chia sẻ</h2><button id="refresh" type="button" class="quiet" data-i18n="refresh">Tải lại</button></div>
+          <label class="sr-only" for="case-search" data-i18n="searchSessions">Tìm mã hồ sơ</label>
+          <input id="case-search" type="search" data-i18n-placeholder="searchSessions" placeholder="Tìm mã hồ sơ" autocomplete="off">
+          <label class="sr-only" for="case-filter" data-i18n="filter">Lọc trạng thái</label>
+          <select id="case-filter"><option value="all" data-i18n="all">Tất cả trạng thái</option><option value="collecting" data-i18n="collecting">Đang thu thập</option><option value="finalized" data-i18n="finalized">Đã chốt báo cáo</option></select>
+          <p id="queue-message" class="help" role="status" aria-live="polite"></p>
+          <ul id="session-list" class="session-list"></ul>
+          <p class="queue-note" data-i18n="queueNote">Chỉ các hồ sơ được cấp quyền xuất hiện tại đây. Số ảnh không phải kết quả xác minh.</p>
+        </aside>
+        <article id="case-detail" class="case-detail" tabindex="-1" aria-labelledby="detail-title">
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="caseReview">DUYỆT BẰNG CHỨNG</p><h2 id="detail-title" data-i18n="chooseCase">Chọn một hồ sơ</h2></div><span id="session-status" class="badge" hidden></span></div>
+          <p id="detail-message" role="status" aria-live="polite" class="muted"></p>
+          <button id="detail-retry" type="button" hidden data-i18n="retry">Thử lại</button>
+          <div id="detail-content" hidden>
+            <div class="collection"><div class="section-heading"><h3 data-i18n="progress">Nhóm ảnh bắt buộc</h3><span id="progress-text" class="mono"></span></div><progress id="progress" max="4" value="0" aria-label="Nhóm ảnh bắt buộc"></progress><p id="collection-help" class="help"></p></div>
+            <div class="evidence-layout">
+              <div class="photo-column">
+                <div class="section-heading"><h3 data-i18n="currentPhotos">Ảnh hiện tại</h3><span id="current-count" class="count"></span></div>
+                <div id="current-gallery" class="gallery"></div>
+                <details class="history"><summary><span data-i18n="history">Lịch sử bằng chứng</span> <span id="history-count" class="count"></span></summary><p class="help" data-i18n="historyHelp">Ảnh cũ được lưu riêng; không tính vào tiến độ hiện tại.</p><div id="history-gallery" class="gallery"></div></details>
+                <figure class="viewer"><div id="photo-placeholder" class="photo-placeholder" data-i18n="choosePhoto">Chọn ảnh để xem và đối chiếu.</div><img id="selected-photo" hidden alt=""><figcaption id="photo-caption"></figcaption></figure>
+                <button id="photo-retry" type="button" hidden data-i18n="reloadPhoto">Tải lại ảnh</button>
+                <details class="metadata"><summary data-i18n="metadata">Dữ liệu chữ ký & định danh</summary><dl id="metadata-list"></dl></details>
+              </div>
+              <div class="review-column">
+                <section class="review-block" aria-labelledby="verify-title">
+                  <p class="eyebrow" data-i18n="byteCheck">ĐỐI CHIẾU BYTE</p><h3 id="verify-title" data-i18n="verifyTitle">Kiểm tra tính toàn vẹn</h3>
+                  <p class="help" data-i18n="verifyHelp">Chọn đúng tệp gốc đã tải lên. Tệp chuyển mã có thể FAIL dù trông giống hệt. Dashboard gửi nguyên byte, không vẽ lại ảnh.</p>
+                  <form id="verify-form"><label for="verify-file" data-i18n="fileLabel">Tệp ảnh cần đối chiếu</label><input id="verify-file" name="image" type="file" accept="image/jpeg,image/png" aria-describedby="file-help"><p id="file-help" class="help" data-i18n="fileHelp">JPEG hoặc PNG, tối đa 10 MiB. Kết quả chỉ dành cho ảnh và tệp đang chọn.</p><button id="verify-submit" class="primary" type="submit" disabled data-i18n="verify">Kiểm tra tệp</button></form>
+                  <p id="verify-result" role="status" aria-live="polite" class="verify-result"></p>
+                  <p class="notice" data-i18n="integrityNotice">PASS chỉ xác nhận byte ảnh không đổi so với dữ liệu đã ký; không chứng minh cảnh thật, thời điểm thật hay giá trị pháp lý. FAIL không phải kết luận vi phạm.</p>
+                </section>
+                <section class="review-block" aria-labelledby="advisory-title"><h3 id="advisory-title" data-i18n="advisoryTitle">Nhận xét mô hình đã lưu</h3><p id="advisory-status" class="badge" hidden></p><p id="advisory-language" class="help"></p><p id="advisory-text" class="preline"></p><p class="help" data-i18n="advisoryNotice">Chỉ tham khảo cho ảnh đang chọn. Không phải bằng chứng mật mã, xác thực sự thật hoặc kết luận pháp lý. Dashboard không gửi ảnh tới mô hình.</p></section>
+              </div>
+            </div>
+            <section class="report-section" aria-labelledby="report-title"><div class="section-heading"><h3 id="report-title" data-i18n="report">Báo cáo đã chốt</h3><div class="button-row"><button id="report-load" type="button" data-i18n="loadReport">Mở báo cáo</button><button id="report-download" type="button" disabled data-i18n="download">Tải JSON</button></div></div><p id="report-message" role="status" aria-live="polite" class="help"></p><div id="report-summary"></div></section>
+          </div>
+        </article>
+      </section>
+      <section id="legal-panel" class="legal-panel" role="tabpanel" aria-labelledby="tab-legal" hidden>
+        <p class="eyebrow" data-i18n="retrievalOnly">CHỈ TRUY XUẤT · KHÔNG SINH CÂU TRẢ LỜI</p><h2 data-i18n="legalTitle">Tra cứu đoạn trích</h2><p class="muted" data-i18n="legalHelp">Tra cứu nguồn về chứng cứ trong kho văn bản hiện có, không phải điều khoản bảo hiểm. Hiển thị nguyên đoạn và nguồn; không suy diễn quyền lợi từ ảnh hay kết quả FAIL.</p>
+        <form id="legal-form" class="legal-form"><label class="sr-only" for="legal-query" data-i18n="legalQuery">Từ khóa hoặc điều khoản</label><input id="legal-query" type="search" required maxlength="300" placeholder="Từ khóa hoặc điều khoản" data-i18n-placeholder="legalQuery"><button id="legal-submit" type="submit" class="primary" data-i18n="searchLegal">Tra cứu</button></form>
+        <p class="notice" data-i18n="legalNotice">Không phải tư vấn pháp lý hoặc xác nhận quyền lợi. Bảo hiểm vật chất xe tự nguyện khác bảo hiểm trách nhiệm dân sự bắt buộc với bên thứ ba. Kiểm tra văn bản gốc và hợp đồng thực tế; giám định viên và doanh nghiệp bảo hiểm quyết định, không tự động tính hay duyệt bồi thường.</p>
+        <p id="legal-message" role="status" aria-live="polite"></p><button id="legal-retry" type="button" hidden data-i18n="retry">Thử lại</button><div id="legal-results"></div>
+      </section>
+      <footer class="workspace-footer"><span>TRUSTCAM / REVIEW</span><span data-i18n="footer">Ảnh gốc · Dấu vết thay đổi · Đối chiếu độc lập</span></footer>
+    </div>
+  </main>
+  <noscript>Cần bật JavaScript để đăng nhập và đọc dữ liệu từ máy chủ. JavaScript is required to sign in and load server data.</noscript>
+</body>
+</html>

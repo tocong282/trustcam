@@ -1,0 +1,82 @@
+[
+  {
+    "query": "chụp ảnh gì",
+    "expected_passages": [
+      {
+        "chunk_id": "baoviet-969-2026-6",
+        "quote": "6.4. Trong trường hợp đặc biệt, Bảo Việt không thể thực hiện được việc giám định thì Bảo Việt có trách nhiệm hướng dẫn Người được bảo hiểm, Người điều khiển xe thu thập đầy đủ thông tin chi tiết về nguyên nhân, diễn biến, mức độ thiệt hại cùng các chứng từ, ảnh chụp thiệt hại và tài liệu liên quan để làm căn cứ xác định bồi thường.",
+        "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "source_file": "text/baoviet-969-2026.selected.txt",
+        "text_start": 2642,
+        "text_end": 2975
+      }
+    ],
+    "answer_guardrail": "Chỉ có chỉ dẫn ảnh chụp thiệt hại và tài liệu liên quan khi không giám định được; không có danh sách góc chụp cản xe chuẩn trong nguồn. Ảnh toàn cảnh/vị trí xe/biển số/cận cảnh nếu đề xuất phải gắn nhãn khuyến nghị demo, không phải trích quy tắc.",
+    "must_abstain_coverage": true,
+    "integrity_separate_from_coverage": true
+  },
+  {
+    "query": "báo tổn thất thế nào",
+    "expected_passages": [
+      {
+        "chunk_id": "baoviet-969-2026-5-2-6",
+        "quote": "5.2.6. Nghĩa vụ khi xảy ra thiệt hại: Khi xảy ra thiệt hại, Bên mua bảo hiểm, Người được bảo hiểm, Người điều khiển xe phải có nghĩa vụ:\n\na) Thông báo ngay và bảo vệ hiện trường: Thông báo ngay cho Tổng đài dịch vụ chăm sóc khách hàng của Bảo Việt (trong vòng 24 giờ kể từ khi xảy ra thiệt hại hoặc ngay khi có thể, trừ trường hợp bất khả kháng) để phối hợp giải quyết, tích cực cứu chữa, hạn chế thiệt hại về người và tài sản, giữ nguyên hiện trường tai nạn; đồng thời thông báo cho cơ quan Công an hoặc chính quyền địa phương nơi gần nhất (trừ trường hợp bất khả kháng).\n\nb) Không tự ý di chuyển/sửa chữa tài sản: Không được di chuyển, tháo dỡ hoặc sửa chữa tài sản khi chưa có ý kiến chấp thuận của Bảo Việt (trừ trường hợp cần thiết để đảm bảo an toàn, đề phòng hạn chế thiệt hại về người và tài sản hoặc phải thi hành theo yêu cầu của cơ quan có thẩm quyền).\n\nc) Thông báo bằng văn bản: Trong thời hạn năm (05) ngày kể từ ngày xảy ra thiệt hại (trừ trường hợp bất khả kháng) phải thông báo thiệt hại bằng văn bản cho Bảo Việt hoặc các hình thức khác theo quy định của Bảo Việt.",
+        "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "source_file": "text/baoviet-969-2026.selected.txt",
+        "text_start": 0,
+        "text_end": 1082
+      }
+    ],
+    "answer_guardrail": "Theo đúng ví dụ quy tắc 969: thông báo ngay, giữ nguyên ngoại lệ của khoản a và c; dùng đầu mối ghi trong hợp đồng thực tế. Không lấy mốc 6 giờ của bản cũ.",
+    "must_abstain_coverage": true,
+    "integrity_separate_from_coverage": true
+  },
+  {
+    "query": "có tự sửa trước khi giám định không",
+    "expected_passages": [
+      {
+        "chunk_id": "baoviet-969-2026-5-2-6",
+        "quote": "b) Không tự ý di chuyển/sửa chữa tài sản: Không được di chuyển, tháo dỡ hoặc sửa chữa tài sản khi chưa có ý kiến chấp thuận của Bảo Việt (trừ trường hợp cần thiết để đảm bảo an toàn, đề phòng hạn chế thiệt hại về người và tài sản hoặc phải thi hành theo yêu cầu của cơ quan có thẩm quyền).\n\nc) Thông báo bằng văn bản: Trong thời hạn năm (05) ngày kể từ ngày xảy ra thiệt hại (trừ trường hợp bất khả kháng) phải thông báo thiệt hại bằng văn bản cho Bảo Việt hoặc các hình thức khác theo quy định của Bảo Việt.",
+        "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "source_file": "text/baoviet-969-2026.selected.txt",
+        "text_start": 574,
+        "text_end": 1082
+      }
+    ],
+    "answer_guardrail": "Không tự ý di chuyển, tháo dỡ hoặc sửa chữa khi chưa có ý kiến chấp thuận, giữ nguyên các ngoại lệ về an toàn, hạn chế thiệt hại và yêu cầu cơ quan có thẩm quyền.",
+    "must_abstain_coverage": true,
+    "integrity_separate_from_coverage": true
+  },
+  {
+    "query": "giấy tờ hồ sơ cần gì",
+    "expected_passages": [
+      {
+        "chunk_id": "baoviet-969-2026-7",
+        "quote": "Điều 7. Hồ sơ bồi thường\n\nĐối với từng vụ việc cụ thể thì Hồ sơ bồi thường bao gồm một hoặc nhiều loại tài liệu sau:\n\n7.1. Tài liệu do Bên mua bảo hiểm, Người được bảo hiểm cung cấp:\n\n7.1.1. Thông báo tai nạn và yêu cầu bồi thường (theo mẫu của Bảo Việt).\n\n7.1.2. Tài liệu liên quan đến xe, người điều khiển xe (bản sao có xác nhận của cơ quan có thẩm quyền hoặc bản sao có xác nhận của nhân viên Bảo Việt sau khi đã đối chiếu với bản chính) như sau:\n\na) Giấy chứng nhận bảo hiểm/Đơn bảo hiểm và các thỏa thuận khác bằng văn bản (nếu có).\n\nb) Giấy đăng ký xe (có thể sử dụng bản sao còn hiệu lực của ngân hàng/các tổ chức tín dụng trong trường hợp ngân hàng/ các tổ chức tín dụng đang giữ Giấy đăng ký xe), Giấy phép lái xe của người điều khiển xe bị thiệt hại.\n\nc) Các giấy tờ liên quan đến mua bán, chuyển nhượng, cho, tặng, ủy quyền sử dụng xe (nếu có).\n\nd) Giấy chứng nhận kiểm định còn thời hạn hiệu lực (trừ trường hợp xe lưu hành tạm thời có văn bản chấp thuận của cơ quan có thẩm quyền hoặc hoạt động trong thời gian thực hiện thủ tục đăng ký, kiểm định lần đầu tiên tại Việt Nam).\n\nRiêng đối với Giấy phép lái xe và Giấy chứng nhận kiểm định, Bảo Việt chấp nhận bản vật lý còn hiệu lực hoặc thông tin đã được xác thực trên ứng dụng VNeID hoặc tra cứu trên cổng thông tin điện tử của cơ quan có thẩm quyền có giá trị tương đương.\n\n7.1.3. Tài liệu chứng minh thiệt hại về tài sản, bao gồm:\n\na) Chứng từ hợp lệ về việc sửa chữa, thay mới tài sản bị thiệt hại.\n\nb) Các giấy tờ chứng minh chi phí cần thiết và hợp lý mà Người được bảo hiểm đã chi ra để giảm thiểu thiệt hại hay để thực hiện theo chỉ dẫn của Bảo Việt.\n\n7.1.4. Biên bản thỏa thuận/hòa giải (trong trường hợp hòa giải).\n\n7.1.5. Bản án hoặc Quyết định có hiệu lực của Tòa án (nếu có).\n\n7.1.6. Các tài liệu cần thiết để chuyển quyền cho Bảo Việt đòi bồi thường từ bên gây thiệt hại cho xe được bảo hiểm mà Người được bảo hiểm đã được Bảo Việt nhận trách nhiệm bồi thường thiệt hại hoặc đã giải quyết bồi thường thiệt hại này (trong trường hợp đòi người thứ ba).\n\n7.2. Bản sao có xác nhận của cơ quan công an trong trường hợp tai nạn có sự tham gia giải quyết của cơ quan công an, bao gồm:\n\n7.2.1. Biên bản khám nghiệm hiện trường vụ tai nạn (nếu có).\n\n7.2.2. Sơ đồ hiện trường tai nạn, bản ảnh (nếu có).\n\n7.2.3. Biên bản khám nghiệm phương tiện liên quan đến tai nạn (nếu có).\n\n7.2.4. Thông báo sơ bộ kết quả điều tra ban đầu vụ tai nạn (nếu có).\n\n7.2.5. Biên bản giải quyết tai nạn (nếu có); Bản kết luận điều tra tai nạn (nếu có).\n\n7.2.6. Kết luận định giá tài sản (nếu có).\n\n7.3. Các tài liệu liên quan đến trách nhiệm của người thứ ba (trường hợp thiệt hại xảy ra có liên quan đến trách nhiệm của người thứ ba):\n\n7.3.1. Tài liệu liên quan đến lỗi và trách nhiệm của người thứ ba.\n\n7.3.2. Tài liệu liên quan đến việc thế quyền của Người được bảo hiểm.\n\n7.3.3. Biên bản giải quyết với bên thứ 3 (nếu có).\n\n7.4. Biên bản giám định nguyên nhân và mức độ thiệt hại được các bên thống nhất.\n\n7.5. Các tài liệu khác có liên quan (nếu có).\n\n7.6. Trường hợp xe bị mất trộm, mất cướp toàn bộ thì người được bảo hiểm, Người điều khiển xe cần cung cấp các tài liệu sau:\n\n7.6.1. Đơn trình báo mất trộm, mất cướp với cơ quan Công an có xác nhận của cơ quan Công an.\n\n7.6.2. Quyết định khởi tố và điều tra hình sự (nếu có) liên quan đến mất trộm, mất cướp ô tô được bảo hiểm.\n\n7.6.3. Quyết định đình chỉ điều tra, đình chỉ khởi tố vụ án hình sự liên quan đến mất trộm, mất cướp ô tô được bảo hiểm.\n\n7.6.4. Khai báo bị mất giấy tờ, tài liệu liên quan đến xe bị mất cắp, mất cướp khi để trên xe có xác nhận của cơ quan Công an.",
+        "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "source_file": "text/baoviet-969-2026.selected.txt",
+        "text_start": 2977,
+        "text_end": 6557
+      }
+    ],
+    "answer_guardrail": "Toàn bộ Điều 7: tùy vụ việc một hoặc nhiều loại tài liệu; không biến hồ sơ công an, tòa án, mất trộm thành bắt buộc cho vết xước nhỏ.",
+    "must_abstain_coverage": true,
+    "integrity_separate_from_coverage": true
+  },
+  {
+    "query": "PASS có đồng nghĩa được bồi thường không",
+    "expected_passages": [
+      {
+        "chunk_id": "baoviet-969-2026-10",
+        "quote": "10.1. Đối tượng bảo hiểm:\n\nBảo Việt nhận bảo hiểm thiệt hại vật chất xe ô tô, bao gồm: thiệt hại vật chất của xe ô tô được định danh theo biển số đăng ký hay số khung và số máy (đối với xe chưa hoàn tất thủ tục đăng ký theo quy định của pháp luật, hoặc các phương tiện chỉ hoạt động trong các khu vực hạn chế được quản lý bằng số khung, số máy/ký hiệu) xảy ra do những tai nạn bất ngờ ngoài sự kiểm soát của chủ xe/lái xe trong những trường hợp được quy định tại phạm vi bảo hiểm và không rơi vào điểm loại trừ bảo hiểm.\n\n10.2. Phạm vi bảo hiểm:\n\nBảo Việt nhận bảo hiểm và sẽ bồi thường cho những thiệt hại vật chất đối với xe ô tô được bảo hiểm do các rủi ro sau gây ra:\n\n10.2.1. Đâm, va chạm với vật thể khác từ bên ngoài (không bao gồm thiệt hại phát sinh từ chính các bộ phận của xe bị bật ra, rơi rớt hoặc hư hỏng tự thân va chạm với các bộ phận khác của xe ô tô), lật, đổ, chìm, rơi toàn bộ xe ô tô, cháy, nổ, hỏa hoạn.\n\n10.2.2. Những tai họa bất khả kháng do thiên tai gây ra.\n\n10.2.3. Mất cắp, mất cướp toàn bộ xe.\n\n10.2.4. Hành vi gây thiệt hại của người không liên quan đến quyền lợi bảo hiểm hoặc do động vật gây ra.\n\n10.2.5. Gãy vỡ, biến dạng thiết bị chuyên dùng: Thiệt hại gãy vỡ, biến dạng đối với các thiết bị chuyên dùng (không bao gồm thiết bị điện tử) của xe ô tô trong quá trình vận hành, hoạt động theo đúng chức năng thiết kế (bao gồm thiết bị chuyên dùng làm hỏng xe).\n\nBảo Việt không bồi thường thiệt hại đối với xe ô tô gây ra bởi các rủi ro không được quy định tại khoản 10.2 Điều này.\n\n10.3. Ngoài số tiền bồi thường, Bảo Việt còn thanh toán cho Người được bảo hiểm những chi phí cần thiết và hợp lý theo thỏa thuận tại Hợp đồng bảo hiểm để thực hiện các công việc theo yêu cầu và chỉ dẫn của Bảo Việt khi xảy ra tổn thất (thuộc phạm vi bảo hiểm), bao gồm các chi phí:\n\n10.3.1. Chi phí ngăn ngừa hạn chế thiệt hại phát sinh thêm.\n\n10.3.2. Chi phí cứu hộ và vận chuyển xe bị thiệt hại tới nơi sửa chữa gần nhất/hoặc garage sửa chữa của đại lý bán xe tối đa không vượt quá mười phần trăm (10%) số tiền bảo hiểm của xe đó.",
+        "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "source_file": "text/baoviet-969-2026.selected.txt",
+        "text_start": 6599,
+        "text_end": 8645
+      }
+    ],
+    "answer_guardrail": "Không. PASS của TRUSTCAM chỉ là tín hiệu kiểm tra tính toàn vẹn/chứng cứ theo chức năng được triển khai, không phải quyết định phạm vi hoặc chi trả. Nguồn bảo hiểm không định nghĩa TRUSTCAM PASS. Chưa có hợp đồng thực tế, nguyên nhân và giám định nên phải từ chối kết luận vết xước được bảo hiểm.",
+    "must_abstain_coverage": true,
+    "integrity_separate_from_coverage": true
+  }
+]

@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import { slots } from '../src/core.ts';
+import { parseSession, parseReport, captureTarget, canFinalize } from '../src/responses.ts';
+const key = 'ab'.repeat(32), sid = 'fixture';
+const entry = (n: number, slot = slots[n % 4], additional = n >= 4, replaces: string | null = null) => {
+ const id = `00000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
+ const manifest = {version:'1', session_id:sid, device_id:key, slot, sha256:'cd'.repeat(32), captured_at:'2026-11-14T00:00:00.000Z'};
+ return {evidence_id:id, slot, sha256:manifest.sha256, captured_at:manifest.captured_at, public_key:key, signature:'ef'.repeat(64), manifest, is_additional:additional, replaces_evidence_id:replaces};
+};
+const evidence = Array.from({length:20}, (_, n) => entry(n));
+const envelope = (items: unknown[], history: unknown[] = []) => ({session_id:sid, evidence:items, evidence_history:history, analysis_mode:'checklist', status:'collecting', report_id:null, max_evidence:20, next_action:{type:'finalize'}});
+const parsed = parseSession(envelope(evidence), sid);
+assert.equal(parsed.evidence.length, 20);
+assert.equal(parsed.evidence[4].is_additional, true);
+assert.equal(parsed.max_evidence, 20);
+assert.equal(canFinalize(parsed), true);
+assert.equal(captureTarget(parsed, null, slots[0]), null, '20 current cap');
+const four = parseSession(envelope(evidence.slice(0,4)), sid);
+assert.deepEqual(captureTarget(four, null, slots[2]), {slot:slots[2], replaces_evidence_id:null, is_additional:true});
+assert.equal(captureTarget({...four, max_evidence:undefined}, null, slots[2]), null, 'Legacy server must not receive additional flag');
+assert.equal(canFinalize({...four,evidence:four.evidence.slice(0,3)}), false);
+assert.equal(captureTarget({...four,status:'finalized'},null,slots[0]),null);
+assert.throws(() => parseSession(envelope([...evidence,entry(20)]),sid), /invalid_response/);
+assert.throws(() => parseSession(envelope([...evidence.slice(0,4),entry(4,slots[0],false)]),sid), /invalid_response/);
+assert.throws(() => parseSession(envelope([{...entry(0),is_additional:'true'}]),sid), /invalid_response/);
+const report = {report_id:'r',report:{version:'1', session_id:sid, device_id:key, evidence, evidence_history:[], analysis_mode:'checklist', integrity_notice:'fixture'}};
+assert.equal(parseReport(report,sid).report.evidence.length,20);
+assert.throws(() => parseReport({...report,report:{...report.report,evidence:[entry(0),entry(4,slots[0],false)]}},sid), /invalid_response/);
+// Two distinct same-category chains; only exhausted chain blocked.
+const history = [entry(40,slots[0],false),entry(41,slots[0],false,entry(40).evidence_id),entry(42,slots[0],false,entry(41).evidence_id),entry(43,slots[0],false,entry(42).evidence_id)];
+const chains = parseSession(envelope([entry(44,slots[0],false,entry(43).evidence_id),entry(45,slots[0],true)],history),sid);
+assert.equal(captureTarget(chains,entry(44).evidence_id),null);
+assert.deepEqual(captureTarget(chains,entry(45).evidence_id),{slot:slots[0],replaces_evidence_id:entry(45).evidence_id});
+const eighty = Array.from({length:80},(_, n) => entry(100+n));
+assert.equal(parseSession(envelope(evidence,eighty),sid).evidence_history.length,80);
+assert.throws(() => parseSession(envelope(evidence,[...eighty,entry(180)]),sid), /invalid_response/);
+console.log('PASS 20 current / 80 history, additional capability, primary duplicates, category completion, per-chain retake limits');

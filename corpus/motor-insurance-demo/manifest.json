@@ -1,0 +1,702 @@
+{
+  "schema_version": "motor-insurance-demo/1",
+  "demo_only": true,
+  "current_validity_verified": false,
+  "documents": [
+    {
+      "insurer": "Tổng Công ty Bảo hiểm Bảo Việt",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "language": "vi",
+      "jurisdiction": "VN",
+      "applicability": "Chỉ là ví dụ công khai; phụ thuộc hợp đồng, giấy chứng nhận, phụ lục và tình tiết thực tế.",
+      "publication_date": null,
+      "latest_version_verified": false,
+      "id": "baoviet-969-2026",
+      "title": "Quy tắc bảo hiểm vật chất xe ô tô",
+      "version": "969/QĐ-BHBV; ngày 26/01/2026 đọc từ trang 1; chưa xác nhận mới nhất",
+      "type": "insurer_policy",
+      "document_number": "969/QĐ-BHBV",
+      "issued_date": "2026-01-26",
+      "effective_date": null,
+      "website_application_date": "2026-03-01",
+      "website_application_date_source": "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html",
+      "date_note": "Trang sản phẩm ghi áp dụng từ 1/3/2026; không coi đó là ngày hiệu lực pháp luật hoặc xác nhận áp dụng hợp đồng khách hàng.",
+      "official_urls": [
+        "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+        "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html"
+      ],
+      "source_url": "https://baovietonline.com.vn/uploads/attachment/quy-tac-bao-hiem-vat-chat-o-to-bao-hiem-vat-chat-xe-o-to-vi.pdf",
+      "source_file": "text/baoviet-969-2026.selected.txt",
+      "raw_source_files": [
+        "raw/baoviet-969.pdf",
+        "raw/baoviet-969.pdftotext.txt",
+        "raw/baoviet-969-2026.visual-transcription.txt",
+        "raw/ocr-969/page-01.png",
+        "raw/ocr-969/page-01.txt",
+        "raw/ocr-969/page-09.png",
+        "raw/ocr-969/page-09.txt",
+        "raw/ocr-969/page-10.png",
+        "raw/ocr-969/page-10.txt",
+        "raw/ocr-969/page-11.png",
+        "raw/ocr-969/page-11.txt",
+        "raw/ocr-969/page-12.png",
+        "raw/ocr-969/page-12.txt",
+        "raw/ocr-969/page-13.png",
+        "raw/ocr-969/page-13.txt",
+        "raw/ocr-969/page-14.png",
+        "raw/ocr-969/page-14.txt",
+        "raw/ocr-969/page-15.png",
+        "raw/ocr-969/page-15.txt",
+        "raw/ocr-969/page-17.png",
+        "raw/ocr-969/page-17.txt",
+        "raw/ocr-969/page-18.png",
+        "raw/ocr-969/page-18.txt"
+      ],
+      "legal_status": "insurer_contractual_terms_example_not_legislation",
+      "citation_id": 3,
+      "extraction": "pdftotext text layer corrupted; Tesseract vie 220 dpi; selected complete sections visually transcribed against PNG pages; full OCR retained unreviewed.",
+      "files": [
+        {
+          "path": "raw/baoviet-969.pdf",
+          "sha256": "bfdaa4be36847abfb4b43f1d18b0475d1a62194feebcd8087f7704d280c48f59",
+          "bytes": 9717084
+        },
+        {
+          "path": "raw/baoviet-969.pdftotext.txt",
+          "sha256": "7625189401bdc65a30ecf879ae1007a29e58ab56a3fa7c6de8bfb20ddf07484c",
+          "bytes": 59573
+        },
+        {
+          "path": "raw/baoviet-969-2026.visual-transcription.txt",
+          "sha256": "eafe47ada67b7c236456ad4e37b6915f34a6f778b5cc4c596813e7eb20eb4b8a",
+          "bytes": 18770
+        },
+        {
+          "path": "raw/ocr-969/page-01.png",
+          "sha256": "6ca098675542133eabe775e5a581571e6d198568be55da43f3edbe4a049e5c54",
+          "bytes": 893027
+        },
+        {
+          "path": "raw/ocr-969/page-01.txt",
+          "sha256": "96ff238aa4cd00b15715ef67e39b5324834e1ae3e2d8f876dd7477483c94198d",
+          "bytes": 936
+        },
+        {
+          "path": "raw/ocr-969/page-09.png",
+          "sha256": "46710cc9b663054ac7c6a87ff040af2edde9c7db85317150852c82e10cf4e896",
+          "bytes": 3368797
+        },
+        {
+          "path": "raw/ocr-969/page-09.txt",
+          "sha256": "d8f8694413c644c205fd054dab5cb8fe5409014b34a4004be03dec17364bd0a4",
+          "bytes": 4037
+        },
+        {
+          "path": "raw/ocr-969/page-10.png",
+          "sha256": "88ff4c314d1866988ff9de6b17cc81c649e49d0c2049f41a03392db5ddbeca52",
+          "bytes": 3093299
+        },
+        {
+          "path": "raw/ocr-969/page-10.txt",
+          "sha256": "af0afb11303529dcea8074d85f137f99b3ff92a626b0b007ed59199d3ca87f1c",
+          "bytes": 3868
+        },
+        {
+          "path": "raw/ocr-969/page-11.png",
+          "sha256": "b7bc9439e85588dfae55d5605d5d208038cd9fcf63977ec0c34f80add45dcfc3",
+          "bytes": 2757021
+        },
+        {
+          "path": "raw/ocr-969/page-11.txt",
+          "sha256": "f950c00b7f514ac85758889db96c213abea71482c7deed0f8ab676339f84320a",
+          "bytes": 3398
+        },
+        {
+          "path": "raw/ocr-969/page-12.png",
+          "sha256": "c9da8b782154d119d612a43fca32d264b996677690026891de62fda2c9ae1902",
+          "bytes": 2633235
+        },
+        {
+          "path": "raw/ocr-969/page-12.txt",
+          "sha256": "99725686be8686df19a7f80f773f611dbfee1f09387090b9342770375f76cb9b",
+          "bytes": 3258
+        },
+        {
+          "path": "raw/ocr-969/page-13.png",
+          "sha256": "007a7da42c9beef44d49739e32af8e82b903e11e09fd076b97d486946e296676",
+          "bytes": 2578143
+        },
+        {
+          "path": "raw/ocr-969/page-13.txt",
+          "sha256": "7bbc2c3995d5c5f9caae8305cc40028d4e6c25cc73e4a8fc857811bcb5720138",
+          "bytes": 3063
+        },
+        {
+          "path": "raw/ocr-969/page-14.png",
+          "sha256": "da098f7161b30ac42ccb8a34cd1cbe3f92fd0f64dd7c8f8f8c934fdc23779eb8",
+          "bytes": 2654086
+        },
+        {
+          "path": "raw/ocr-969/page-14.txt",
+          "sha256": "a3431ea76f72085001311085e8be4d84ce07b79f4015c09659e7e1c905a6704c",
+          "bytes": 3240
+        },
+        {
+          "path": "raw/ocr-969/page-15.png",
+          "sha256": "5030f9b16ea7cec880e69bc2580d4792db05013814197a50d56ebc2a441caf95",
+          "bytes": 2939166
+        },
+        {
+          "path": "raw/ocr-969/page-15.txt",
+          "sha256": "17d087eed933163207d3fab7a4024db8535e2591db8614bdcac74949a424d09a",
+          "bytes": 3523
+        },
+        {
+          "path": "raw/ocr-969/page-17.png",
+          "sha256": "dff5c18e8fca7dc1d2fba573d31804c9a6257dc7083c008c241064bebb3fd974",
+          "bytes": 2976229
+        },
+        {
+          "path": "raw/ocr-969/page-17.txt",
+          "sha256": "687a3b3296b6b4911fca8cdb39c1d09a2f452fbc043737ccaed1541832a9a3c0",
+          "bytes": 3537
+        },
+        {
+          "path": "raw/ocr-969/page-18.png",
+          "sha256": "16c4197c72b540fbe953a4cbaa284710348aa663190271ad17530bc0e2298d83",
+          "bytes": 2745612
+        },
+        {
+          "path": "raw/ocr-969/page-18.txt",
+          "sha256": "98558b62cb9a63e2a250a3ea913dc4d006433366071f46cacb238258068dc0a4",
+          "bytes": 3378
+        },
+        {
+          "path": "text/baoviet-969-2026.selected.txt",
+          "sha256": "eafe47ada67b7c236456ad4e37b6915f34a6f778b5cc4c596813e7eb20eb4b8a",
+          "bytes": 18770
+        }
+      ],
+      "sha256": "bfdaa4be36847abfb4b43f1d18b0475d1a62194feebcd8087f7704d280c48f59",
+      "fetched_at_utc": "2026-11-14T08:22:57.864605+00:00",
+      "fetched_at_note": "UTC file capture completion timestamp; original HTTP headers unavailable for first fetch; see retrievals.json for verified re-fetch.",
+      "chunk_ids": [
+        "baoviet-969-2026-5-2-6",
+        "baoviet-969-2026-5-2-7",
+        "baoviet-969-2026-6",
+        "baoviet-969-2026-7",
+        "baoviet-969-2026-10",
+        "baoviet-969-2026-11",
+        "baoviet-969-2026-14",
+        "baoviet-969-2026-15-2"
+      ]
+    },
+    {
+      "insurer": "Tổng Công ty Bảo hiểm Bảo Việt",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "language": "vi",
+      "jurisdiction": "VN",
+      "applicability": "Chỉ là ví dụ công khai; phụ thuộc hợp đồng, giấy chứng nhận, phụ lục và tình tiết thực tế.",
+      "publication_date": null,
+      "latest_version_verified": false,
+      "id": "baoviet-product-54",
+      "title": "Trang sản phẩm Bảo hiểm vật chất xe ô tô — nhãn phiên bản",
+      "version": "snapshot; ngày công bố không xác định",
+      "type": "claims_guide",
+      "document_number": null,
+      "issued_date": null,
+      "effective_date": null,
+      "official_urls": [
+        "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html"
+      ],
+      "source_url": "https://baovietonline.com.vn/vi/bao-hiem-ca-nhan/54/bao-hiem-vat-chat-xe-o-to.html",
+      "source_file": "text/product.txt",
+      "raw_source_files": [
+        "raw/product-claims.html"
+      ],
+      "legal_status": "official_product_reference_not_contract_not_legislation",
+      "citation_id": 1,
+      "extraction": "stdlib HTMLParser; scripts/styles removed, HTML entities decoded; version labels only, NOT independent motor claim procedure.",
+      "files": [
+        {
+          "path": "raw/product-claims.html",
+          "sha256": "1d9efed8d9c77fb1da21ba8a17b3eb18aaf886bfcb011a1b986bb4b5981e58f3",
+          "bytes": 126847
+        },
+        {
+          "path": "text/product.txt",
+          "sha256": "7e39ee6467d32160f7ceebd7693c3704012023a88d1d4e4fcaaa4793920612b4",
+          "bytes": 8656
+        }
+      ],
+      "sha256": "1d9efed8d9c77fb1da21ba8a17b3eb18aaf886bfcb011a1b986bb4b5981e58f3",
+      "fetched_at_utc": "2026-11-14T08:22:18.184800+00:00",
+      "fetched_at_note": "UTC file capture completion timestamp; original HTTP headers unavailable for first fetch; see retrievals.json for verified re-fetch.",
+      "chunk_ids": [
+        "baoviet-product-54-version-labels"
+      ]
+    },
+    {
+      "insurer": "Tổng Công ty Bảo hiểm Bảo Việt",
+      "demo_only": true,
+      "current_validity_verified": false,
+      "language": "vi",
+      "jurisdiction": "VN",
+      "applicability": "Chỉ là ví dụ công khai; phụ thuộc hợp đồng, giấy chứng nhận, phụ lục và tình tiết thực tế.",
+      "publication_date": null,
+      "latest_version_verified": false,
+      "id": "baoviet-own-damage-claim-form",
+      "title": "Thông báo tai nạn & yêu cầu bồi thường bảo hiểm vật chất ô tô (Áp dụng đối với tổn thất vật chất đơn giản)",
+      "version": "mẫu công khai không thấy số phiên bản/ngày ban hành; chưa xác nhận hiện hành",
+      "type": "claims_guide",
+      "document_number": null,
+      "issued_date": null,
+      "effective_date": null,
+      "official_urls": [
+        "https://baovietonline.com.vn/uploads/attachment/a28f0c31be4a2ff2618c17a0a1365970.pdf"
+      ],
+      "source_url": "https://baovietonline.com.vn/uploads/attachment/a28f0c31be4a2ff2618c17a0a1365970.pdf",
+      "source_file": "text/claim-form.txt",
+      "raw_source_files": [
+        "raw/own-damage-claim-form.pdf",
+        "raw/own-damage-claim-form.pdftotext.txt"
+      ],
+      "legal_status": "official_claim_form_example_not_coverage_decision_not_legislation",
+      "citation_id": 6,
+      "extraction": "pdftotext -layout; complete one-page form; no asserted relation to policy 969 beyond same insurer and own-damage product.",
+      "files": [
+        {
+          "path": "raw/own-damage-claim-form.pdf",
+          "sha256": "1022a4ce3c2aecf9729794d45b44c981e3b9941e13032f13718b73191e235366",
+          "bytes": 199480
+        },
+        {
+          "path": "raw/own-damage-claim-form.pdftotext.txt",
+          "sha256": "1f21b63677bf542deed57fb32a5a8a770a830df3f3aa18b2e91e257ef63907d3",
+          "bytes": 2884
+        },
+        {
+          "path": "text/claim-form.txt",
+          "sha256": "1f21b63677bf542deed57fb32a5a8a770a830df3f3aa18b2e91e257ef63907d3",
+          "bytes": 2884
+        }
+      ],
+      "sha256": "1022a4ce3c2aecf9729794d45b44c981e3b9941e13032f13718b73191e235366",
+      "fetched_at_utc": "2026-11-14T08:25:25.444817+00:00",
+      "fetched_at_note": "UTC file capture completion timestamp; original HTTP headers unavailable for first fetch; see retrievals.json for verified re-fetch.",
+      "chunk_ids": [
+        "baoviet-own-damage-claim-form-full-form"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/baoviet-5688-2021.pdf",
+      "sha256": "52fc9751d8991c5986302ab1ce02611de8ff891bcee756626641654a85e8e76f",
+      "bytes": 6811867
+    },
+    {
+      "path": "raw/baoviet-5688-2021.pdftotext.txt",
+      "sha256": "c2e6bbbc07a9227268f6aa70de30805f434edc9d69cc9bf8eb73fed81417d74c",
+      "bytes": 53961
+    },
+    {
+      "path": "raw/baoviet-6556-2016.pdf",
+      "sha256": "0087b761a1aa9a16977574c47de762d154d1b9f42af69fb2f494fa264325671f",
+      "bytes": 2197891
+    },
+    {
+      "path": "raw/baoviet-6556-2016.pdftotext.txt",
+      "sha256": "35d0f247791bc466cb7866bc015c4dd28f2bd6dbc499ea566fc2a4d3418cdf4f",
+      "bytes": 43954
+    },
+    {
+      "path": "raw/baoviet-969-2026.visual-transcription.txt",
+      "sha256": "eafe47ada67b7c236456ad4e37b6915f34a6f778b5cc4c596813e7eb20eb4b8a",
+      "bytes": 18770
+    },
+    {
+      "path": "raw/baoviet-969.pdf",
+      "sha256": "bfdaa4be36847abfb4b43f1d18b0475d1a62194feebcd8087f7704d280c48f59",
+      "bytes": 9717084
+    },
+    {
+      "path": "raw/baoviet-969.pdftotext.txt",
+      "sha256": "7625189401bdc65a30ecf879ae1007a29e58ab56a3fa7c6de8bfb20ddf07484c",
+      "bytes": 59573
+    },
+    {
+      "path": "raw/claims-guide.html",
+      "sha256": "d3893212c4687abd734555538a8c315baf36eba35035c52ac13605518ec18caf",
+      "bytes": 102592
+    },
+    {
+      "path": "raw/ocr-969/page-01.png",
+      "sha256": "6ca098675542133eabe775e5a581571e6d198568be55da43f3edbe4a049e5c54",
+      "bytes": 893027
+    },
+    {
+      "path": "raw/ocr-969/page-01.txt",
+      "sha256": "96ff238aa4cd00b15715ef67e39b5324834e1ae3e2d8f876dd7477483c94198d",
+      "bytes": 936
+    },
+    {
+      "path": "raw/ocr-969/page-02.png",
+      "sha256": "179e6012d7f8e9eb94e6569f493c22d9635caff432a6e20e729f795c2700879e",
+      "bytes": 1825776
+    },
+    {
+      "path": "raw/ocr-969/page-02.txt",
+      "sha256": "ed04ae05c24d2a1ac0fd922b149e8171986fdd847a0027c3b77c848e56802ee4",
+      "bytes": 2676
+    },
+    {
+      "path": "raw/ocr-969/page-03.png",
+      "sha256": "95af5d4dec8aa3b6a7df0785e477808723d10e85c87cc0aa600d8d657d79fb06",
+      "bytes": 2973217
+    },
+    {
+      "path": "raw/ocr-969/page-03.txt",
+      "sha256": "6d1515c8ffcf4f41c13086f466241d3e71ee70c7093d493c9a2e1c4ceabb6023",
+      "bytes": 3540
+    },
+    {
+      "path": "raw/ocr-969/page-04.png",
+      "sha256": "32892523522b465520f77506cfb0e9aa4819863d62e5b8c88c7a23e0dc2bcf34",
+      "bytes": 2836835
+    },
+    {
+      "path": "raw/ocr-969/page-04.txt",
+      "sha256": "8e977ddfdacd6e29e5f92b64b1463a3c7e2df2ea31e261913af0d2c4906af989",
+      "bytes": 3425
+    },
+    {
+      "path": "raw/ocr-969/page-05.png",
+      "sha256": "d4b1b43c2277dbe1fc600e75fc2532dba03877a312827e841bea1d071c0c096b",
+      "bytes": 2749731
+    },
+    {
+      "path": "raw/ocr-969/page-05.txt",
+      "sha256": "0d80479a3c4d46da3749eeb5a87d9137acbafe761ab89dd84ab478872afda968",
+      "bytes": 3252
+    },
+    {
+      "path": "raw/ocr-969/page-06.png",
+      "sha256": "9bd19579e34730fa34fbe80dda8a752358f695cb0b0d990c47e4f3f82498d406",
+      "bytes": 2756659
+    },
+    {
+      "path": "raw/ocr-969/page-06.txt",
+      "sha256": "f602095e88dae2ed29db1177deaf48cbff652fcef6cf9139171d8021ebe6122f",
+      "bytes": 3339
+    },
+    {
+      "path": "raw/ocr-969/page-07.png",
+      "sha256": "86c5edadf0354e6958ce06eaf5a4c88fec8fe15b24849927d6e096a9b83d99f0",
+      "bytes": 2478775
+    },
+    {
+      "path": "raw/ocr-969/page-07.txt",
+      "sha256": "573426a5c3061c2a3250c8adf9876f77cc19aeab420748f38dc2226af9374b7c",
+      "bytes": 2990
+    },
+    {
+      "path": "raw/ocr-969/page-08.png",
+      "sha256": "510778e01872c51c0ee07100c9459bc093f8e54ba77b740c2e1f548259bceac5",
+      "bytes": 2722687
+    },
+    {
+      "path": "raw/ocr-969/page-08.txt",
+      "sha256": "a48cc6740d7d46452a34aea537e3f56f5fc4e54bd68aded87d3ced1d7eb573b3",
+      "bytes": 3276
+    },
+    {
+      "path": "raw/ocr-969/page-09.png",
+      "sha256": "46710cc9b663054ac7c6a87ff040af2edde9c7db85317150852c82e10cf4e896",
+      "bytes": 3368797
+    },
+    {
+      "path": "raw/ocr-969/page-09.txt",
+      "sha256": "d8f8694413c644c205fd054dab5cb8fe5409014b34a4004be03dec17364bd0a4",
+      "bytes": 4037
+    },
+    {
+      "path": "raw/ocr-969/page-10.png",
+      "sha256": "88ff4c314d1866988ff9de6b17cc81c649e49d0c2049f41a03392db5ddbeca52",
+      "bytes": 3093299
+    },
+    {
+      "path": "raw/ocr-969/page-10.txt",
+      "sha256": "af0afb11303529dcea8074d85f137f99b3ff92a626b0b007ed59199d3ca87f1c",
+      "bytes": 3868
+    },
+    {
+      "path": "raw/ocr-969/page-11.png",
+      "sha256": "b7bc9439e85588dfae55d5605d5d208038cd9fcf63977ec0c34f80add45dcfc3",
+      "bytes": 2757021
+    },
+    {
+      "path": "raw/ocr-969/page-11.txt",
+      "sha256": "f950c00b7f514ac85758889db96c213abea71482c7deed0f8ab676339f84320a",
+      "bytes": 3398
+    },
+    {
+      "path": "raw/ocr-969/page-12.png",
+      "sha256": "c9da8b782154d119d612a43fca32d264b996677690026891de62fda2c9ae1902",
+      "bytes": 2633235
+    },
+    {
+      "path": "raw/ocr-969/page-12.txt",
+      "sha256": "99725686be8686df19a7f80f773f611dbfee1f09387090b9342770375f76cb9b",
+      "bytes": 3258
+    },
+    {
+      "path": "raw/ocr-969/page-13.png",
+      "sha256": "007a7da42c9beef44d49739e32af8e82b903e11e09fd076b97d486946e296676",
+      "bytes": 2578143
+    },
+    {
+      "path": "raw/ocr-969/page-13.txt",
+      "sha256": "7bbc2c3995d5c5f9caae8305cc40028d4e6c25cc73e4a8fc857811bcb5720138",
+      "bytes": 3063
+    },
+    {
+      "path": "raw/ocr-969/page-14.png",
+      "sha256": "da098f7161b30ac42ccb8a34cd1cbe3f92fd0f64dd7c8f8f8c934fdc23779eb8",
+      "bytes": 2654086
+    },
+    {
+      "path": "raw/ocr-969/page-14.txt",
+      "sha256": "a3431ea76f72085001311085e8be4d84ce07b79f4015c09659e7e1c905a6704c",
+      "bytes": 3240
+    },
+    {
+      "path": "raw/ocr-969/page-15.png",
+      "sha256": "5030f9b16ea7cec880e69bc2580d4792db05013814197a50d56ebc2a441caf95",
+      "bytes": 2939166
+    },
+    {
+      "path": "raw/ocr-969/page-15.txt",
+      "sha256": "17d087eed933163207d3fab7a4024db8535e2591db8614bdcac74949a424d09a",
+      "bytes": 3523
+    },
+    {
+      "path": "raw/ocr-969/page-16.png",
+      "sha256": "4657254480ec45dac4de2794d4ca668fdd4304aeb5157ce48c87e0459c08718d",
+      "bytes": 2932117
+    },
+    {
+      "path": "raw/ocr-969/page-16.txt",
+      "sha256": "097635195fd6fa6b13ba28250b9d9a3421a11dbe66d90c84792eca5c2af07166",
+      "bytes": 3756
+    },
+    {
+      "path": "raw/ocr-969/page-17.png",
+      "sha256": "dff5c18e8fca7dc1d2fba573d31804c9a6257dc7083c008c241064bebb3fd974",
+      "bytes": 2976229
+    },
+    {
+      "path": "raw/ocr-969/page-17.txt",
+      "sha256": "687a3b3296b6b4911fca8cdb39c1d09a2f452fbc043737ccaed1541832a9a3c0",
+      "bytes": 3537
+    },
+    {
+      "path": "raw/ocr-969/page-18.png",
+      "sha256": "16c4197c72b540fbe953a4cbaa284710348aa663190271ad17530bc0e2298d83",
+      "bytes": 2745612
+    },
+    {
+      "path": "raw/ocr-969/page-18.txt",
+      "sha256": "98558b62cb9a63e2a250a3ea913dc4d006433366071f46cacb238258068dc0a4",
+      "bytes": 3378
+    },
+    {
+      "path": "raw/ocr-969/page-19.png",
+      "sha256": "553cf73c4b968dfd7c43b941416269c53364fb022a4274b249a29d5db71a79a7",
+      "bytes": 2935308
+    },
+    {
+      "path": "raw/ocr-969/page-19.txt",
+      "sha256": "41ae94be78b2129b59eb81e367181dcae9e5675e7b92543ce95a70b16e70f574",
+      "bytes": 3423
+    },
+    {
+      "path": "raw/ocr-969/page-20.png",
+      "sha256": "a14116801000d634200af92cd3fcc86f483b7a329f3799e5947c4dd9cabe7790",
+      "bytes": 2961934
+    },
+    {
+      "path": "raw/ocr-969/page-20.txt",
+      "sha256": "ef18cca299a8128dcbdd57bf8365498f3ccbf11236abb33a13eb90ccfa7710ab",
+      "bytes": 3542
+    },
+    {
+      "path": "raw/ocr-969/page-21.png",
+      "sha256": "82ac4cc7fc99504705d748d259312fcbf3b30bda6bd0dc05adef6ed0a2283351",
+      "bytes": 1713294
+    },
+    {
+      "path": "raw/ocr-969/page-21.txt",
+      "sha256": "bfbea7e9f173a125a512508467d2bbcca8c809875a6bc8d7022228aab25a8145",
+      "bytes": 1751
+    },
+    {
+      "path": "raw/ocr-969-300/page-09.png",
+      "sha256": "96d3d7d9768f929c25b9516504d2dfaa00d38e2e7f9e290364ccf7b281465782",
+      "bytes": 5494733
+    },
+    {
+      "path": "raw/ocr-969-300/page-09.txt",
+      "sha256": "e139930c68a06c5a5ad6cdceca8c03d628dcfa1d9631079c8061e7a2fd3e0aaa",
+      "bytes": 4014
+    },
+    {
+      "path": "raw/ocr-969-300/page-10.png",
+      "sha256": "90c9f6552ce325cb9b1997bbf4f68338af6148857d82e5d7ac522ea1f1db1823",
+      "bytes": 5026957
+    },
+    {
+      "path": "raw/ocr-969-300/page-10.txt",
+      "sha256": "34c51d5acdd1adc1ac73a7610c74345414044d2b4ec311ae9dd9d6e963478e23",
+      "bytes": 3868
+    },
+    {
+      "path": "raw/ocr-969-300/page-11.png",
+      "sha256": "1d22e52ea98a5494baca73d6ab377d80d26b9dd51b60bd75f9cb42771be704f1",
+      "bytes": 4500761
+    },
+    {
+      "path": "raw/ocr-969-300/page-11.txt",
+      "sha256": "5a6bb0363d78d5eabc8333f46df31f20ee0d4c7252ba0203735f7c2df993ab15",
+      "bytes": 3395
+    },
+    {
+      "path": "raw/ocr-969-300/page-12.png",
+      "sha256": "e8fd0aad91cb0b6b185e5236ff613f620bafb8f6fb9aace94f31f637f1328f7f",
+      "bytes": 4285282
+    },
+    {
+      "path": "raw/ocr-969-300/page-12.txt",
+      "sha256": "ce7a69120c7e1a738f3625589ebb457ac482ce579d60d8216988ec4a51e59588",
+      "bytes": 3238
+    },
+    {
+      "path": "raw/ocr-969-300/page-13.png",
+      "sha256": "bef11147f71d952e0dcaa7c1eeee4fe13020d273225555ecf1097183cff24853",
+      "bytes": 4188782
+    },
+    {
+      "path": "raw/ocr-969-300/page-13.txt",
+      "sha256": "b663952eed60a8bd69a1908aadbf0bf883c64c1568eb571ffcbcf9bd59e82075",
+      "bytes": 3074
+    },
+    {
+      "path": "raw/ocr-969-300/page-14.png",
+      "sha256": "7dba50eb49e07563fe7c46ca750a2d2949ac8591b0cd3ffff11279933cd5e47d",
+      "bytes": 4311400
+    },
+    {
+      "path": "raw/ocr-969-300/page-14.txt",
+      "sha256": "3105787dc41314703457ee8ad62294bd1742a95ece70ec538e5821d4245635f0",
+      "bytes": 3228
+    },
+    {
+      "path": "raw/ocr-969-300/page-15.png",
+      "sha256": "c9c682eaa180466db1dee487349a2ab27c0d9257ac114c08449c934064ca6a4d",
+      "bytes": 4779525
+    },
+    {
+      "path": "raw/ocr-969-300/page-15.txt",
+      "sha256": "d1e758b7da52d29297163838638639f491d6733dfbe652d80dd6fcefa84cc957",
+      "bytes": 3501
+    },
+    {
+      "path": "raw/ocr-969-300/page-16.png",
+      "sha256": "e910375658dbda90885a2c0c68993381a33ab27f1558504ead17656ab04732bb",
+      "bytes": 4766203
+    },
+    {
+      "path": "raw/ocr-969-300/page-16.txt",
+      "sha256": "e08faaa4eeafb6339f3e9dfcee67d6539ab9596e3b6cd6ff3e05e24668fa93fa",
+      "bytes": 3750
+    },
+    {
+      "path": "raw/ocr-969-300/page-17.png",
+      "sha256": "5bef3d02c4936372f84abd10ad68b788fa893510be91a586218a665e700ca397",
+      "bytes": 4837121
+    },
+    {
+      "path": "raw/ocr-969-300/page-17.txt",
+      "sha256": "d43c62c5527335458e57deec98e0e593c54c520d0666d096179998ebd918d6e0",
+      "bytes": 3554
+    },
+    {
+      "path": "raw/ocr-969-300/page-18.png",
+      "sha256": "47637ab5dcbc46405df07d161ce5bbf694f36b7237e57503fd207c553b391516",
+      "bytes": 4472257
+    },
+    {
+      "path": "raw/ocr-969-300/page-18.txt",
+      "sha256": "8f1078c6ce46dfdf4a769a834d590e166eebe85b30005608ba6fe66204305b2d",
+      "bytes": 3361
+    },
+    {
+      "path": "raw/own-damage-claim-form.pdf",
+      "sha256": "1022a4ce3c2aecf9729794d45b44c981e3b9941e13032f13718b73191e235366",
+      "bytes": 199480
+    },
+    {
+      "path": "raw/own-damage-claim-form.pdftotext.txt",
+      "sha256": "1f21b63677bf542deed57fb32a5a8a770a830df3f3aa18b2e91e257ef63907d3",
+      "bytes": 2884
+    },
+    {
+      "path": "raw/product-claims.html",
+      "sha256": "1d9efed8d9c77fb1da21ba8a17b3eb18aaf886bfcb011a1b986bb4b5981e58f3",
+      "bytes": 126847
+    },
+    {
+      "path": "raw/product-claims.html.refetch",
+      "sha256": "cde48bebf7773b01df53107839da90563f350d674587f23166bd6aceea137942",
+      "bytes": 127022
+    },
+    {
+      "path": "text/baoviet-969-2026.full-ocr-unreviewed.txt",
+      "sha256": "d3d57f9694bc7d5ef85eb8d2ef9d5511f46166a3c116e1c34427cc8945175508",
+      "bytes": 67268
+    },
+    {
+      "path": "text/baoviet-969-2026.selected.txt",
+      "sha256": "eafe47ada67b7c236456ad4e37b6915f34a6f778b5cc4c596813e7eb20eb4b8a",
+      "bytes": 18770
+    },
+    {
+      "path": "text/claim-form.txt",
+      "sha256": "1f21b63677bf542deed57fb32a5a8a770a830df3f3aa18b2e91e257ef63907d3",
+      "bytes": 2884
+    },
+    {
+      "path": "text/product.txt",
+      "sha256": "7e39ee6467d32160f7ceebd7693c3704012023a88d1d4e4fcaaa4793920612b4",
+      "bytes": 8656
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "path": "raw/baoviet-6556-2016.pdf",
+      "reason": "older policy; no chunks, do not mix deadlines"
+    },
+    {
+      "path": "raw/baoviet-5688-2021.pdf",
+      "reason": "website labels before 1/3/2026; no chunks, do not mix deadlines"
+    },
+    {
+      "path": "raw/claims-guide.html",
+      "reason": "health claims page, not motor own-damage; no chunks"
+    }
+  ],
+  "offset_convention": "Unicode codepoints, half-open [text_start,text_end) in UTF-8 decoded source_file; not byte/PDF offsets",
+  "scope": "3 retained example documents, 10 selected complete sections; full policy PDF retained, only selected text visually reviewed. Not wired to application."
+}
