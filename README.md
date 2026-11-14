@@ -2,7 +2,7 @@
 
 Thu thập hồ sơ ảnh có chữ ký số cho demo tiếp nhận yêu cầu bồi thường bảo hiểm vật chất ô tô. Mobile Expo React Native TypeScript VI/EN, backend FastAPI/SQLite, dashboard doanh nghiệp HTML/CSS/JavaScript thuần.
 
-**Bản demo có kiểm soát, chưa sẵn sàng production public. Không dùng ảnh khách hàng thật.** Đăng nhập dashboard không bảo vệ các API tạo hồ sơ riêng; cần VPN/IP allowlist hoặc SSH tunnel cho toàn dịch vụ. Xem [audit](docs/PRODUCTION-SECURITY-AUDIT.md), [readiness](docs/PRODUCTION-READINESS.md) và [hướng dẫn server](docs/DEPLOY-DEMO.md).
+**Bản demo có kiểm soát. Không dùng ảnh khách hàng thật.** Demo trực tuyến: https://trustcam.minet.vn/dashboard/ (HTTPS, cookie Secure; mật khẩu dashboard cấp riêng, không nằm trong repo). Đăng nhập dashboard không bảo vệ các API tạo hồ sơ riêng; chưa có admission/quota cho API mobile, nên vẫn chưa đạt chuẩn production public. Xem [audit](docs/PRODUCTION-SECURITY-AUDIT.md), [readiness](docs/PRODUCTION-READINESS.md) và [hướng dẫn server](docs/DEPLOY-DEMO.md).
 
 ## Giám khảo bắt đầu ở đây
 
